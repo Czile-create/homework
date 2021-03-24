@@ -1,5 +1,5 @@
-#ifndef _CLIST_HPP_
-#define _CLIST_HPP_
+#ifndef _ARRAY_HPP_
+#define _ARRAY_HPP_
 
 #include <iostream>
 #include <algorithm>
@@ -46,6 +46,13 @@ class clist {
 template<class T, unsigned N>
 clist<T, N>::clist() {
     p = new T[N+1];
+}
+
+template <class T, unsigned N>
+template <class RandomAccessIterator>
+clist<T, N>::clist(RandomAccessIterator first, RandomAccessIterator end) {
+    for (auto i=0; i<N && first != end; i++, first++)
+        p[i] = *first;
 }
 
 template<class T, unsigned N>
@@ -103,11 +110,9 @@ T* clist<T, N>::find(const T& val, unsigned k) {
     if (!k)
         return p+N;
     auto t = p;
-    for (; t != p+N && k; t++)
+    for (; t != p+N && k;k && (t++))
         if (*t == val)
             k--;
-    if (t != p+N)
-        return t - 1;
     return t;
 }
 
