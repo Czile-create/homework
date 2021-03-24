@@ -1,7 +1,7 @@
 #ifndef _SETT_H_
 #define _SETT_H_
 
-#include "04.h"
+#include "02.h"
 
 template <class T>
 class sett{
