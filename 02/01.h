@@ -1,5 +1,5 @@
-#ifndef _ARRAY_HPP_
-#define _ARRAY_HPP_
+#ifndef _CLIST_HPP_
+#define _CLIST_HPP_
 
 #include <iostream>
 #include <algorithm>
