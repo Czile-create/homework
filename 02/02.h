@@ -10,7 +10,6 @@ class denode {
         T val;
 };
 
-// This is an easy De-linkedlist
 template <class T>
 class delist {
     public:
@@ -175,11 +174,9 @@ denode<T>* delist<T>::find(const T& val, unsigned k) {
     if (!k)
         return _last;
     auto p = _first;
-    for (; p != _last && k; p = p -> next)
+    for (; p != _last && k; k && (p = p -> next))
         if (p->val == val)
             k--;
-    if (p != _last)
-        return p -> front;
     return p;
 }
 
