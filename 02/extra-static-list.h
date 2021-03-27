@@ -1,25 +1,25 @@
-#ifndef _CYCLELIST_H_
-#define _CYCLELIST_H_
+#ifndef _STATICLIST_H_
+#define _STATICLIST_H_
 
 #include <algorithm>
 #include <iostream>
 
 template <class T>
-class cyclelistnode {
+class staticlistnode {
     public:
         T val;
         unsigned next;
 };
 
 
-// define a circular linkedlist of type T, with _nlist linkedlist, and totally _size elements.
+// define a static linkedlist of type T, with _nlist linkedlist, and totally _size elements.
 template <class T, unsigned _nlist, unsigned _size> 
-class cyclelist {
+class staticlist {
     public:
-        // Constructor of the cycle chain.
-        cyclelist();
-        // Destroys the cycle chain.
-        ~cyclelist();
+        // Constructor of the static chain.
+        staticlist();
+        // Destroys the static chain.
+        ~staticlist();
         // Insert the element in the position.
         // Return the position of the element.
         // Para: first is the position, second is the value, third is the nlistth list=0.
@@ -36,17 +36,17 @@ class cyclelist {
         void print();
     private:
         unsigned *_first, _last, _free;
-        cyclelistnode<T> *p;
+        staticlistnode<T> *p;
 };
 
 template <class T, unsigned _nlist, unsigned _size> 
-cyclelist<T, _nlist, _size>::cyclelist() {
+staticlist<T, _nlist, _size>::staticlist() {
     if (_size < _nlist) {
-        throw "In class cyclelist<T, _nlist, _size>: _size cannot smaller than _nlist.";
+        throw "In class staticlist<T, _nlist, _size>: _size cannot smaller than _nlist.";
         return;
     }
     _first = new unsigned[_nlist];
-    p = new cyclelistnode<T>[_size + 1];
+    p = new staticlistnode<T>[_size + 1];
     for (unsigned i=0; i<_nlist; i++) {
         _first[i] = _size;
         p[i].next = i + 1;
@@ -59,15 +59,15 @@ cyclelist<T, _nlist, _size>::cyclelist() {
 }
 
 template <class T, unsigned _nlist, unsigned _size> 
-cyclelist<T, _nlist, _size>::~cyclelist() {
+staticlist<T, _nlist, _size>::~staticlist() {
     delete [] _first;
     delete [] p;
 }
 
 template <class T, unsigned _nlist, unsigned _size> 
-unsigned cyclelist<T, _nlist, _size>::insert(unsigned pos, const T& val, unsigned nlist) {
+unsigned staticlist<T, _nlist, _size>::insert(unsigned pos, const T& val, unsigned nlist) {
     if (_free == _last || pos > _last || nlist >= _nlist) {
-        throw "In class cyclelist<T, _nlist, _nsize>::insert: The length of the list is not enough.\n";
+        throw "In class staticlist<T, _nlist, _nsize>::insert: The length of the list is not enough.\n";
         return _last;
     }
     
@@ -98,7 +98,7 @@ unsigned cyclelist<T, _nlist, _size>::insert(unsigned pos, const T& val, unsigne
 }
 
 template <class T, unsigned _nlist, unsigned _size> 
-unsigned cyclelist<T, _nlist, _size>::erase(unsigned pos) {
+unsigned staticlist<T, _nlist, _size>::erase(unsigned pos) {
     if (pos >= _last)
         return _last;
     p[pos].val = p[p[pos].next].val;
@@ -109,21 +109,21 @@ unsigned cyclelist<T, _nlist, _size>::erase(unsigned pos) {
 }
 
 template <class T, unsigned _nlist, unsigned _size>
-unsigned cyclelist<T, _nlist, _size>::begin(unsigned t) const{
+unsigned staticlist<T, _nlist, _size>::begin(unsigned t) const{
     if (t>=_nlist) {
-        throw "In cyclelist<T, _nlist, _nsize>::begin(unsigned): NOT such linked list.\n";
+        throw "In staticlist<T, _nlist, _nsize>::begin(unsigned): NOT such linked list.\n";
         return _last;
     }
     return _first[t];
 }
 
 template <class T, unsigned _nlist, unsigned _size>
-unsigned cyclelist<T, _nlist, _size>::end() const noexcept {
+unsigned staticlist<T, _nlist, _size>::end() const noexcept {
     return _last;
 }
 
 template <class T, unsigned _nlist, unsigned _size>
-void cyclelist<T, _nlist, _size>::print() {
+void staticlist<T, _nlist, _size>::print() {
     for (auto i = 0; i < _nlist; i++) {
         for (auto j = _first[i]; j != _last; j = p[j].next) 
             std::cout<<p[j].val<<" ";
