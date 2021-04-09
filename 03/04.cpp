@@ -34,6 +34,8 @@ double ans(string s) {
     }
 
     // process the operator [+-]
+    s = regex_replace(s, regex("-(\\+)*?-"), "+");
+    s = regex_replace(s, regex("-(\\+)*"), "-");
     double answer = 0;
     auto first = s.cbegin(), last = s.cend();
     while (regex_search(first, last, ex, regex("-?\\d+(\\.\\d+)?"))) {
