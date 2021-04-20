@@ -49,6 +49,6 @@ double ans(string s) {
 int main() {
     string s;
     getline(cin, s);
-    cout<<ans(s)<<endl;
+    cout<<ans(s);
     return 0;
 }

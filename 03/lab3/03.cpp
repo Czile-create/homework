@@ -75,6 +75,6 @@ void rearrange(vector<int> &p, unsigned k) {
 
 int main() {
     vector<int> p = {1, 4, 2, 5, 3, 6, 7};
-    rearrange(p, 1);
+    rearrange(p, 2);
     return 0;
 }
