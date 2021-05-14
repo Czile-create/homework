@@ -28,8 +28,23 @@ int main() {
         str = accumulate(matrix.begin(), matrix.end(), str, [&i](auto j, string& k){
             return j + k[i];
         });
+    
+    auto i = 0, j = m - 1;
+    while (i != m - 1 || j) {
+        str += matrix[i][j];
+        if (j == m - 1 && i == m - 1)
+            i = 1, j = 0, str+=" ";
+        else if (j == m - 1)
+            j = m - i - 2, i = 0, str+=" ";
+        else if (i == m - 1)
+            i = m - j, j = 0, str+=" ";
+        else 
+            ++i, ++j;
+    }
 
-    // str = str + reverse_copy(str.begin(), str.end(), str);
+    auto tmp = str;
+    reverse(tmp.begin(), tmp.end());
+    str += " "+tmp;
     
     cout<<"Here are the words that match:\n";
     for (auto &i: dictionary)
