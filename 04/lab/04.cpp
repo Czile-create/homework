@@ -16,7 +16,8 @@ matrix operator*(const matrix &a, const matrix& b) {
     matrix ans;
     for (auto &i: a)
         for (auto &j: b)
-            ans[make_pair(i.first.first, j.first.second)] += i.second * j.second;
+            if (i.first.second == j.first.first)
+                ans[make_pair(i.first.first, j.first.second)] += i.second * j.second;
     return ans;
 }
 
