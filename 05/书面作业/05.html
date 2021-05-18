@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0E;&#x7B97;&#x6CD5;&#x7B2C;&#x4E94;&#x6B21;&#x4F5C;&#x4E1A;</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <hr>
+<h1 id="数据结构与算法第五次作业">数据结构与算法第五次作业</h1>
+<blockquote>
+<p>陈梓乐 19336035</p>
+</blockquote>
+<blockquote>
+<p>部分代码可在 <a href="">gitee.com/Czile/homework</a> 中找到</p>
+</blockquote>
+<hr>
+<h2 id="1-证明满二叉树的分支数为-b--2n0---1-n0-为叶子节点数">1. 证明：满二叉树的分支数为 <code>B</code> = 2(<code>n0</code> - 1). <code>n0</code> 为叶子节点数</h2>
+<p>由性质5-3[1]， <code>n2</code> = <code>n0</code> - 1， <code>n2</code> 是度数为2的节点数。于是题设要证 <code>B</code> = 2<code>n2</code>.</p>
+<p>由满二叉树的性质[2]， 满二叉树只有度数为0和度数为2的节点，于是没有度数为1的节点，每一个度数为2的节点有两个子节点，</p>
+<p>因此分支数为度数为2的节点的两倍。[3]</p>
+<blockquote>
+<p>[1] 王红梅.数据结构与算法(第二版).清华大学出版社.P110.性质5-3</p>
+</blockquote>
+<blockquote>
+<p>[2] 王红梅.数据结构与算法(第二版).清华大学出版社.P108.满二叉树</p>
+</blockquote>
+<blockquote>
+<p>[3] 本题也可用图论中边数等于节点度数和来证明</p>
+</blockquote>
+<h2 id="2-已知度为-m-的树中有-ni-个度数为-i-的节点求树中有多少个叶子节点">2. 已知度为 <code>m</code> 的树中，有 <code>ni</code> 个度数为 <code>i</code> 的节点，求树中有多少个叶子节点。</h2>
+<p>由图论中总度数等于总边数[3]的结论，总度数为： sum(<code>i</code> · <code>ni</code>)</p>
+<p>除了根节点外，每个节点有且仅有一个父节点，于是得到结论：节点数 - 1 = 分支数。</p>
+<p>于是得到等式：<code>n0</code> = sum(<code>i</code> · <code>ni</code>) - sum(<code>ni</code>) + 1    [4]</p>
+<blockquote>
+<p>[4] 本题限定只存在度数为0和度数为2的节点，即可得到性质5-3</p>
+</blockquote>
+<h2 id="3-已知二叉树的中序遍历和后序遍历分别为-cbedafigh-和-cedbifhga试构造二叉树">3. 已知二叉树的中序遍历和后序遍历分别为 <code>CBEDAFIGH</code> 和 <code>CEDBIFHGA</code>，试构造二叉树。</h2>
+<p>使用顺序表来按层表示二叉树如下（空位置用0表示）</p>
+<p><code>ABGCDFH00E00I00</code></p>
+<h2 id="4-给定一组键值-w--5-2-9-11-8-3-7-试构造haffman-tree并计算带权路径长度">4. 给定一组键值 <code>W = (5, 2, 9, 11, 8, 3, 7)</code> 试构造haffman-tree，并计算带权路径长度。</h2>
+<p>构造haffman-tree如下，用haffman编码给出haffman-tree的构造：</p>
+<pre><code><code><div>2 - 0000
+3 - 0001
+5 - 001
+11 - 01
+7 - 10
+8 - 11
+</div></code></code></pre>
+<h2 id="5-字符串s中各字符出现次数分别为-1-2-3-4-4-5-7-9试问haffman编码">5. 字符串S中各字符出现次数分别为 <code>(1, 2, 3, 4, 4, 5, 7, 9)</code>，试问haffman编码。</h2>
+<pre><code><code><div>1 - 00000
+2 - 00001
+3 - 0001
+4 - 100
+4 - 101
+5 - 001
+7 - 11
+9 - 01
+</div></code></code></pre>
+<p>至少两位，至多5位。</p>
+<h2 id="6-设计算法求二叉树深度">6. 设计算法求二叉树深度</h2>
+<p>不妨假定二叉树是使用顺序储存结构，则代码如下：</p>
+<pre><code class="language-cpp"><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cmath&gt;</span></span>
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt;
+<span class="hljs-title">int</span> <span class="hljs-title">depth</span>(<span class="hljs-title">const</span> <span class="hljs-title">vector</span>&lt;T&gt; &amp;<span class="hljs-title">p</span>) <span class="hljs-title">noexcept</span>{</span>
+    <span class="hljs-keyword">return</span> p.size() ? <span class="hljs-keyword">int</span>(log2(p.size())) + <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h2 id="7-以二叉链表为储存结构设计算法求节点的双亲">7. 以二叉链表为储存结构，设计算法求节点的双亲。</h2>
+<pre><code class="language-cpp"><div><span class="hljs-comment">// Find the parent of x</span>
+<span class="hljs-comment">// Return a pointer that points to x&#x27;s parent if it exists, else return nullptr</span>
+<span class="hljs-comment">// p is the root pointer of the tree that remains to search.</span>
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt;
+<span class="hljs-title">node</span>&lt;T&gt; * <span class="hljs-title">getParent</span>(<span class="hljs-title">node</span>&lt;T&gt; *<span class="hljs-title">p</span>, <span class="hljs-title">node</span>&lt;T&gt; *<span class="hljs-title">x</span>) {</span>
+    <span class="hljs-keyword">if</span> (p -&gt; left &amp;&amp; p -&gt; left == x)
+        <span class="hljs-keyword">return</span> p;
+    <span class="hljs-keyword">if</span> (p -&gt; right &amp;&amp; p -&gt; right == x) 
+        <span class="hljs-keyword">return</span> p;
+    node&lt;T&gt; * left, right;
+    <span class="hljs-keyword">if</span> (p -&gt; left)
+        left = getParent(p -&gt; left, x);
+    <span class="hljs-keyword">if</span> (left)
+        <span class="hljs-keyword">return</span> left;
+    <span class="hljs-keyword">if</span> (p -&gt; right)
+        right = getParent(p -&gt; right, x);
+    <span class="hljs-keyword">if</span> (right)
+        <span class="hljs-keyword">return</span> right;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;
+}
+</div></code></pre>
+<h2 id="8-以二叉链表为存储结构删除以值为x的二叉树的子树">8. 以二叉链表为存储结构，删除以值为x的二叉树的子树</h2>
+<pre><code class="language-cpp"><div><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt;
+<span class="hljs-title">void</span> <span class="hljs-title">erase</span>(<span class="hljs-title">node</span>&lt;T&gt;* <span class="hljs-title">p</span>) {</span>
+    <span class="hljs-keyword">if</span> (p &amp;&amp; p -&gt; left)
+        erase(p -&gt; left);
+    <span class="hljs-keyword">if</span> (p &amp;&amp; p -&gt; right)
+        erase(p -&gt; right);
+    <span class="hljs-keyword">if</span> (p)
+        <span class="hljs-keyword">delete</span> p;
+}
+
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt;
+<span class="hljs-title">void</span> <span class="hljs-title">erase</span>(<span class="hljs-title">node</span>&lt;T&gt;* <span class="hljs-title">p</span>, <span class="hljs-title">T</span> &amp; <span class="hljs-title">val</span>) {</span>
+    erase(p -&gt; left, val);
+    erase(p -&gt; right, val);
+    <span class="hljs-keyword">if</span> (p -&gt; val == val)
+        erase(p);
+}
+</div></code></pre>
+<h2 id="9-编写算法实现顺序储存的二叉树的前序遍历">9. 编写算法实现顺序储存的二叉树的前序遍历</h2>
+<pre><code class="language-cpp"><div><span class="hljs-comment">// Find all element in the tree.</span>
+<span class="hljs-comment">// p: The root of the tree</span>
+<span class="hljs-comment">// n: the size of the tree if the tree is full</span>
+<span class="hljs-comment">// nT: the element if it&#x27;s not an element</span>
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt; 
+<span class="hljs-title">vector</span>&lt;T&gt; <span class="hljs-title">NLP</span>(<span class="hljs-title">vector</span>&lt;T&gt;:</span>:iterator p, <span class="hljs-keyword">int</span> n, T&amp;nT) {
+    <span class="hljs-keyword">if</span> (*p == nT)
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">vector</span>&lt;T&gt;();
+    <span class="hljs-built_in">vector</span>&lt;T&gt; ans;
+    ans.push_back(*p);
+    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>)
+        <span class="hljs-keyword">return</span> ans;
+    <span class="hljs-keyword">auto</span> tmp = NLP(p + <span class="hljs-number">1</span>, n / <span class="hljs-number">2</span>, nT);
+    ans.push_back(ans.end(), tmp.begin(), tmp.end());
+    tmp = NLP(p + n / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>, n / <span class="hljs-number">2</span>, nT);
+    ans.push_back(ans.end(), tmp.begin(), tmp.end());
+    <span class="hljs-keyword">return</span> ans;
+}
+
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt;
+<span class="hljs-title">vector</span>&lt;T&gt; <span class="hljs-title">NLP</span>(<span class="hljs-title">vector</span>&lt;T&gt; &amp; <span class="hljs-title">p</span>) {</span>
+    <span class="hljs-keyword">return</span> NLP(p.begin(), p.size(), T());
+}
+</div></code></pre>
+<h2 id="10-编写算法交换所有节点的左右子树">10. 编写算法交换所有节点的左右子树</h2>
+<pre><code class="language-cpp"><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(node&lt;T&gt; * p)</span> </span>{
+    <span class="hljs-keyword">if</span> (p) {
+        swap(p -&gt; left, p -&gt; right);
+        swap(p -&gt; left);
+        swap(p -&gt; right);
+    }
+}
+</div></code></pre>
+<h2 id="11-实现树的各种遍历">11. 实现树的各种遍历</h2>
+<h3 id="前序遍历">前序遍历</h3>
+<pre><code class="language-cpp"><div><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt;
+<span class="hljs-title">vector</span>&lt;T&gt; <span class="hljs-title">NLR</span>(<span class="hljs-title">node</span>&lt;T&gt; *<span class="hljs-title">p</span>) {</span>
+    <span class="hljs-keyword">if</span> (p == <span class="hljs-literal">nullptr</span>)
+        <span class="hljs-keyword">return</span>;
+    <span class="hljs-keyword">auto</span> ans = p -&gt; val;
+    <span class="hljs-keyword">auto</span> left = NLP(p -&gt; left);
+    <span class="hljs-keyword">auto</span> right = NLP(p -&gt; right);
+    ans.insert(ans.end(), left.begin(), left.end());
+    ans.insert(ans.end(), right.begin(), right.end());
+    <span class="hljs-keyword">return</span> ans;
+}
+</div></code></pre>
+<h3 id="中序遍历">中序遍历</h3>
+<pre><code class="language-cpp"><div><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt;
+<span class="hljs-title">vector</span>&lt;T&gt; <span class="hljs-title">LNR</span>(<span class="hljs-title">node</span>&lt;T&gt; *<span class="hljs-title">p</span>) {</span>
+    <span class="hljs-keyword">if</span> (p == <span class="hljs-literal">nullptr</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">vector</span>&lt;T&gt;();
+    <span class="hljs-keyword">auto</span> ans = NLP(p -&gt; left);
+    <span class="hljs-keyword">auto</span> right = NLP(p -&gt; right);
+    ans.push_back(p -&gt; val);
+    ans.insert(ans.end(), right.begin(), right.end());
+    <span class="hljs-keyword">return</span> ans;
+}
+</div></code></pre>
+<h3 id="后序遍历">后序遍历</h3>
+<pre><code class="language-cpp"><div><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt;
+<span class="hljs-title">vector</span>&lt;T&gt; <span class="hljs-title">LRN</span>(<span class="hljs-title">node</span>&lt;T&gt; *<span class="hljs-title">p</span>) {</span>
+    <span class="hljs-keyword">if</span> (p == <span class="hljs-literal">nullptr</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">vector</span>&lt;T&gt;();
+    <span class="hljs-keyword">auto</span> ans = NLP(p -&gt; left);
+    <span class="hljs-keyword">auto</span> right = NLP(p -&gt; right);
+    ans.insert(ans.end(), right.begin(), right.end());
+    ans.push_back(p -&gt; val);
+    <span class="hljs-keyword">return</span> ans;
+}
+</div></code></pre>
+<h3 id="层序遍历">层序遍历</h3>
+<pre><code class="language-cpp"><div><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt;
+<span class="hljs-title">vector</span>&lt;T&gt; <span class="hljs-title">BFS</span>(<span class="hljs-title">node</span> &lt;T&gt; *<span class="hljs-title">p</span>) {</span>
+    <span class="hljs-keyword">if</span> (p == <span class="hljs-literal">nullptr</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">vector</span>&lt;T&gt;();
+    <span class="hljs-built_in">queue</span>&lt;node &lt;T&gt; *&gt; q;
+    <span class="hljs-built_in">vector</span>&lt;T&gt; ans;
+    q.push(p);
+    <span class="hljs-keyword">while</span> (q.size()) {
+        <span class="hljs-keyword">auto</span> top = q.top();
+        q.pop();
+        ans.push_back(top -&gt; val);
+        <span class="hljs-keyword">if</span> (tmp -&gt; left)
+            q.push(tmp -&gt; left);
+        <span class="hljs-keyword">if</span> (tmp -&gt; right)
+            q.push(tmp -&gt; right);
+    }
+    <span class="hljs-keyword">return</span> ans;
+}
+</div></code></pre>
+
+    </body>
+    </html>
