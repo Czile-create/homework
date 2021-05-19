@@ -26,7 +26,7 @@ class Binarytree {
         Binarytree(
             InputIterator first,
             InputIterator last,
-            T && default_value
+            const T & default_value
         );                                                      //range(1)
 
         /*
@@ -76,20 +76,18 @@ class Binarytree {
         * @param p The pointer that points to the position that to process.
         * @param val The value to insert
         * @param[in] pos The position to insert, You can choose: 
-        *   0 p -> parents
-        *   1 p -> leftchild
-        *   2 p -> rightchild
-        * @retval Return the root in p, and the new node.
+        *   false: p -> leftchild
+        *   true : p -> rightchild
+        * @retval Return the root of the new node.
         */
         Binarytreenode* insert(
-            const Binarytreenode * p,
-            const T && val, 
+            Binarytreenode * p,
+            const T & val, 
             const int _pos
         );
 
         // @brief erase the tree whose root is p
-        // @retval return p -> parents if possible
-        Binarytreenode* erase(Binarytreenode *p);
+        void erase(Binarytreenode * p);
 
         /*
         * @brief Get the pointer that points to the root.
@@ -159,6 +157,13 @@ class Binarytree {
 
         // @brief a function that help the copy constructor.
         Binarytreenode * __deepcopy(const Binarytreenode *x) const noexcept;
+        // @brief a function that help preorder traversal.
+        std::vector<T> __preorder(const Binarytreenode *x) const noexcept;
+        // @brief a function that help inorder traversal.
+        std::vector<T> __inorder(const Binarytreenode *x) const noexcept;
+        // @brief a function that help postorder traversal.
+        std::vector<T> __postorder(const Binarytreenode *x) const noexcept;
+        
         Binarytreenode * p;
 };
 
