@@ -9,6 +9,8 @@ class Binarytree {
         typedef struct Binarytreenode {
             Binarytreenode * parents, * left, * right;
             T val;
+            Binarytreenode(T _val):
+                parents(nullptr), left(nullptr), right(nullptr), val(_val){}
         } Binarytreenode;
 
         // (Constructor)
@@ -48,6 +50,12 @@ class Binarytree {
         */
         Binarytree(const Binarytree &x);
 
+        // /*
+        // * @brief Constructs a container with a copy of node.
+        // * @param x The node of the root
+        // */
+        // Binarytree(const Binarytreenode &x);
+
         // (Destructor)
         ~Binarytree();
 
@@ -61,7 +69,7 @@ class Binarytree {
         /*
         * @brief clear the tree and free all the space that alloced.
         */
-        void clear() const noexcept;
+        void clear();
 
         /*
         * @brief insert an node at the specific position.
@@ -79,11 +87,15 @@ class Binarytree {
             const int _pos
         );
 
+        // @brief erase the tree whose root is p
+        // @retval return p -> parents if possible
+        Binarytreenode* erase(Binarytreenode *p);
+
         /*
         * @brief Get the pointer that points to the root.
         * @retval a pointer that points to the root.
         */
-        Binarytreenode* root() const noexcept;
+        Binarytreenode* root() const noexcept {return p;}
 
         /*
         * @brief Get the preorder traversal of the tree.
@@ -137,12 +149,16 @@ class Binarytree {
         size_t sizeOfLeaf() const noexcept;
     private:
         // @brief a function that help the constructor to construct the tree.
+        template <typename InputIterator>
         void __CreateTreeByNLRandLNR(
             InputIterator firstPre, 
             InputIterator lastPre,
             InputIterator firstInorder, 
             InputIterator lastInorder
         );
+
+        // @brief a function that help the copy constructor.
+        Binarytreenode * __deepcopy(const Binarytreenode *x) const noexcept;
         Binarytreenode * p;
 };
 
