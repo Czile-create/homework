@@ -35,13 +35,13 @@
 - [x]    std::vector<T> Inorder() const noexcept;
 - [x]    std::vector<T> Postorder() const noexcept;
 - [x]    std::vector<T> BFS() const noexcept;
-- [ ]    std::string info() const noexcept;
-- [ ]    std::string print() const noexcept;
-- [ ]    size_t size() const noexcept;
-- [ ]    size_t deaph() const noexcept;
-- [ ]    size_t sizeOfLeaf() const noexcept;
+- [x]    std::string info() const noexcept;
+- [x]    std::string print() const noexcept;
+- [x]    size_t size() const noexcept;
+- [x]    size_t deaph() const noexcept;
+- [x]    size_t sizeOfLeaf() const noexcept;
 
-- [ ]    void __CreateTreeByNLRandLNR(
+- [x]    void __CreateTreeByNLRandLNR(
             InputIterator firstPre, 
             InputIterator lastPre,
             InputIterator firstInorder, 
@@ -52,3 +52,4 @@
 - [x]    std::vector<T> __preorder(const Binarytreenode *x) const noexcept;
 - [x]    std::vector<T> __inorder(const Binarytreenode *x) const noexcept;
 - [x]    std::vector<T> __postorder(const Binarytreenode *x) const noexcept;
+

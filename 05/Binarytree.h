@@ -13,6 +13,13 @@ class Binarytree {
                 parents(nullptr), left(nullptr), right(nullptr), val(_val){}
         } Binarytreenode;
 
+        typedef struct thrnode {
+            thrnode *left, *right;
+            bool ltag, rtag;
+            T val;
+            thrnode (T _val): left(nullptr), right(nullptr), val(_val), ltag(0), rtag(0) {}
+        }thrnode;
+
         // (Constructor)
         Binarytree();                                           //default
 
@@ -87,7 +94,8 @@ class Binarytree {
         );
 
         // @brief erase the tree whose root is p
-        void erase(Binarytreenode * p);
+        template <typename K>
+        void erase(K &p);
 
         /*
         * @brief Get the pointer that points to the root.
@@ -121,15 +129,16 @@ class Binarytree {
 
         /* 
         * @brief Return the info of the tree.
+        * @param string(*tostr)(const T&) a function that convert T to string.
         * @retval The info of the tree.
         */
-        std::string info() const noexcept;
+        std::string info(std::string(*tostr)(const T&)) const noexcept;
 
         /*
         * @brief print the struct of the tree in a brief way.
         * @retval Return a string that contains the tree struct.
         */
-        std::string print() const noexcept;
+        std::string print(std::string(*tostr)(const T&)) const noexcept;
 
         /* 
         * @retval Return the number of node of the tree.
@@ -139,12 +148,17 @@ class Binarytree {
         /*
         * @retval Return the deaph of the tree.
         */
-        size_t deaph() const noexcept;
+        size_t depth() const noexcept;
 
         /* 
         * @retval Return the number of the leaf node.
         */
         size_t sizeOfLeaf() const noexcept;
+
+        thrnode* getPreThrBiTree() const noexcept;
+        thrnode* getInThrBiTree() const noexcept;
+        thrnode* getPostThrBiTree() const noexcept;
+        thrnode* getBFSThrBiTree() const noexcept;
     private:
         // @brief a function that help the constructor to construct the tree.
         template <typename InputIterator>
@@ -152,7 +166,8 @@ class Binarytree {
             InputIterator firstPre, 
             InputIterator lastPre,
             InputIterator firstInorder, 
-            InputIterator lastInorder
+            InputIterator lastInorder, 
+            Binarytreenode * &p
         );
 
         // @brief a function that help the copy constructor.
@@ -163,8 +178,21 @@ class Binarytree {
         std::vector<T> __inorder(const Binarytreenode *x) const noexcept;
         // @brief a function that help postorder traversal.
         std::vector<T> __postorder(const Binarytreenode *x) const noexcept;
+        // @brief a function that help get preorder traversal Binarytree.
+        void _preorder(const Binarytreenode *x, thrnode *& y, thrnode *&z) const noexcept;
+        // @brief a function that help get inorder traversal Binarytree.
+        void _inorder(const Binarytreenode *x, thrnode *& y, thrnode *z) const noexcept;
+        // @brief a function that help get postorder traversal Binarytree.
+        void _postorder(const Binarytreenode *x, thrnode *& y, thrnode *z) const noexcept;
+        // @brief a function that help print tree.
+        std::string __print(
+            const Binarytreenode *x, 
+            const size_t depth,
+            std::string(*tostr)(const T&)
+        ) const noexcept;
         
         Binarytreenode * p;
+        thrnode * t;
 };
 
 #include "Binarytree.cpp"
