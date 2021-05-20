@@ -47,10 +47,8 @@ Binarytree<T>::Binarytree(
 }
 
 template <typename T> Binarytree<T>::Binarytree(const Binarytree &x) {
-    p = nullptr;
-    t = nullptr;
-    clear();
     p = __deepcopy(x.root());
+    t = nullptr;
 }
 template <typename T> Binarytree<T> & Binarytree<T>::operator=(const Binarytree &x) {
     clear();
@@ -81,13 +79,24 @@ template <typename T> void Binarytree<T>::clear() {
     t = nullptr;
 }
 
-template <typename T> template <typename K> void Binarytree<T>::erase(
-    K& p
+template <typename T> void Binarytree<T>::erase(
+    Binarytreenode *& p
 ) {
     if (p == nullptr)
         return;
     erase(p -> left);
     erase(p -> right);
+    delete p;
+    p = nullptr;
+}
+
+template <typename T> void Binarytree<T>::erase(
+    thrnode *& p
+) {
+    if (p == nullptr)
+        return;
+    if (!p -> ltag) erase(p -> left);
+    if (!p -> rtag) erase(p -> right);
     delete p;
     p = nullptr;
 }
@@ -277,58 +286,105 @@ template <typename T> template <typename InputIterator> void Binarytree<T>::__Cr
     if (p -> right) p -> right -> parents = p;
 }
 
-// template <typename T> void Binarytree<T>::_preorder(
-//     const Binarytreenode * p,
-//     thrnode *& y, thrnode *& pre
-// ) const noexcept {
-//     if (p == nullptr) return;
-//     y = new thrnode(p -> val);
-//     if (pre -> rtag) pre -> right = y;
-//     y -> rtag = !(p -> right);
-//     y -> ltag = !(p -> left);
-//     if (y -> ltag) y -> left = pre;
-//     pre = p;
-//     _preorder(p -> left, y -> left, p);
-//     _preorder(p -> right, y -> right, pre);
-// }
+template <typename T> void Binarytree<T>::_preorder(
+    const Binarytreenode * p,
+    thrnode *& y, thrnode *& pre
+) noexcept {
+    if (p == nullptr) return;
+    y = new thrnode(p -> val);
+    if (pre && pre -> rtag) pre -> right = y;
+    y -> rtag = !(p -> right);
+    y -> ltag = !(p -> left);
+    if (y -> ltag) y -> left = pre;
+    pre = y;
+    _preorder(p -> left, y -> left, pre);
+    _preorder(p -> right, y -> right, pre);
+}
 
-// template <typename T> std::vector<T> Binarytree<T>::_inorder(
-//     const Binarytreenode * p,
-//     thrnode *& y, thrnode * pre
-// ) const noexcept {
-//     if (p == nullptr) return std::vector<T>();
-//     auto ans = __inorder(p -> left);
-//     ans.push_back(p -> val);
-//     auto tmp = __inorder(p -> right);
-//     ans.insert(ans.end(), tmp.begin(), tmp.end());
-//     return ans;
-// }
+template <typename T> void Binarytree<T>::_inorder(
+    const Binarytreenode * p,
+    thrnode *& y, thrnode *& pre
+) noexcept {
+    if (p == nullptr) return;
+    y = new thrnode(p -> val);
+    _inorder(p -> left, y -> left, pre);
+    if (pre && pre -> rtag) pre -> right = y;
+    y -> rtag = !(p -> right);
+    y -> ltag = !(p -> left);
+    if (y -> ltag) y -> left = pre;
+    pre = y;
+    _inorder(p -> right, y -> right, pre);
+}
 
-// template <typename T> std::vector<T> Binarytree<T>::_postorder(
-//     const Binarytreenode * p,
-//     thrnode *& y, thrnode * pre
-// ) const noexcept {
-//     if (p == nullptr) return std::vector<T>();
-//     auto ans = __postorder(p -> left);
-//     auto tmp = __postorder(p -> right);
-//     ans.insert(ans.end(), tmp.begin(), tmp.end());
-//     ans.push_back(p -> val);
-//     return ans;
-// }
+template <typename T> void Binarytree<T>::_postorder(
+    const Binarytreenode * p,
+    thrnode *& y, thrnode *& pre
+) noexcept {
+    if (p == nullptr) return;
+    y = new thrnode(p -> val);
+    _postorder(p -> left, y -> left, pre);
+    _postorder(p -> right, y -> right, pre);
+    if (pre && pre -> rtag) pre -> right = y;
+    y -> rtag = !(p -> right);
+    y -> ltag = !(p -> left);
+    if (y -> ltag) y -> left = pre;
+    pre = y;
+}
 
-// template <typename T> typename Binarytree<T>::thrnode * 
-// Binarytree<T>::getPreThrBiTree() const noexcept {
-//     _preorder(p, t, nullptr);
-// }
+template <typename T> typename Binarytree<T>::thrnode * 
+Binarytree<T>::getPreThrBiTree() noexcept {
+    null = nullptr;
+    _preorder(p, t, null);
+    return t;
+}
 
-// template <typename T> typename Binarytree<T>::thrnode * 
-// Binarytree<T>::getInThrBiTree() const noexcept {
-//     return _inorder(p, t);
-// }
+template <typename T> typename Binarytree<T>::thrnode * 
+Binarytree<T>::getInThrBiTree() noexcept {
+    null = nullptr;
+    _inorder(p, t, null);
+    return t;
+}
 
-// template <typename T> typename Binarytree<T>::thrnode * 
-// Binarytree<T>::getPostThrBiTree() const noexcept {
-//     return _postorder(p, t);
-// }
+template <typename T> typename Binarytree<T>::thrnode * 
+Binarytree<T>::getPostThrBiTree() noexcept {
+    null = nullptr;
+    _inorder(p, t, null);
+    return t;
+}
+
+template <typename T> typename Binarytree<T>::thrnode * 
+Binarytree<T>::getBFSThrBiTree() noexcept {
+    erase(t);
+    if (p == nullptr) return t;
+    std::vector<thrnode *> ans;
+    std::queue<Binarytreenode *> tmp;
+    auto i = 0;
+    ans.push_back(new thrnode(p -> val));
+    tmp.push(p);
+    while (i < ans.size()) {
+        auto _p = tmp.front();
+        if (_p -> left) {
+            ans.push_back(
+                ans[i] -> left = new thrnode(_p -> left -> val)
+            ); 
+            tmp.push(_p -> left);
+        } else {
+            ans[i] -> ltag = 1;
+            if (i) ans[i] -> left = ans[i - 1];
+        }
+        if (_p -> right) {
+            ans.push_back(
+                ans[i] -> right = new thrnode(_p -> right -> val)
+            ); 
+            tmp.push(_p -> right);
+        } else {
+            ans[i] -> rtag = 1;
+            if (i != ans.size() - 1) ans[i] -> right = ans[i + 1];
+        }
+        ++i;
+        tmp.pop();
+    }
+    return t = ans[0];
+}
 
 #endif

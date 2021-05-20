@@ -29,7 +29,8 @@
             const T & val, 
             const int _pos
          );     
-- [x]    Binarytreenode* erase(Binarytreenode * &p);
+- [x]    void erase(Binarytreenode *& p);
+- [x]    void erase(thrnode *& p);
 - [x]    Binarytreenode* root() const noexcept {return p;}
 - [x]    std::vector<T> Preorder() const noexcept;
 - [x]    std::vector<T> Inorder() const noexcept;
@@ -52,4 +53,15 @@
 - [x]    std::vector<T> __preorder(const Binarytreenode *x) const noexcept;
 - [x]    std::vector<T> __inorder(const Binarytreenode *x) const noexcept;
 - [x]    std::vector<T> __postorder(const Binarytreenode *x) const noexcept;
-
+- [x]    thrnode* getPreThrBiTree() noexcept;
+- [x]    thrnode* getInThrBiTree() noexcept;
+- [x]    thrnode* getPostThrBiTree() noexcept;
+- [x]    thrnode* getBFSThrBiTree() noexcept;
+- [x]    void _preorder(const Binarytreenode *x, thrnode *& y, thrnode *&z) noexcept;
+- [x]    void _inorder(const Binarytreenode *x, thrnode *& y, thrnode *&z) noexcept;
+- [x]    void _postorder(const Binarytreenode *x, thrnode *& y, thrnode *&z) noexcept;
+- [x]    std::string __print(
+            const Binarytreenode *x, 
+            const size_t depth,
+            std::string(*tostr)(const T&)
+         ) const no

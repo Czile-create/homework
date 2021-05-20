@@ -94,8 +94,8 @@ class Binarytree {
         );
 
         // @brief erase the tree whose root is p
-        template <typename K>
-        void erase(K &p);
+        void erase(Binarytreenode *& p);
+        void erase(thrnode *& p);
 
         /*
         * @brief Get the pointer that points to the root.
@@ -154,11 +154,21 @@ class Binarytree {
         * @retval Return the number of the leaf node.
         */
         size_t sizeOfLeaf() const noexcept;
+        
+        // @brief get ThrBinarytree in Preorder traversal
+        // @retval a pointer that points to the root node of the Thrtree.
+        thrnode* getPreThrBiTree() noexcept;
+        // @brief get ThrBinarytree in Inorder traversal
+        // @retval a pointer that points to the root node of the Thrtree.
+        thrnode* getInThrBiTree() noexcept;
+        // @brief get ThrBinarytree in Postorder traversal
+        // @retval a pointer that points to the root node of the Thrtree.
+        thrnode* getPostThrBiTree() noexcept;
+        // @brief get ThrBinarytree in BFS traversal
+        // @retval a pointer that points to the root node of the Thrtree.
+        thrnode* getBFSThrBiTree() noexcept;
 
-        thrnode* getPreThrBiTree() const noexcept;
-        thrnode* getInThrBiTree() const noexcept;
-        thrnode* getPostThrBiTree() const noexcept;
-        thrnode* getBFSThrBiTree() const noexcept;
+        
     private:
         // @brief a function that help the constructor to construct the tree.
         template <typename InputIterator>
@@ -178,12 +188,12 @@ class Binarytree {
         std::vector<T> __inorder(const Binarytreenode *x) const noexcept;
         // @brief a function that help postorder traversal.
         std::vector<T> __postorder(const Binarytreenode *x) const noexcept;
-        // @brief a function that help get preorder traversal Binarytree.
-        void _preorder(const Binarytreenode *x, thrnode *& y, thrnode *&z) const noexcept;
-        // @brief a function that help get inorder traversal Binarytree.
-        void _inorder(const Binarytreenode *x, thrnode *& y, thrnode *z) const noexcept;
-        // @brief a function that help get postorder traversal Binarytree.
-        void _postorder(const Binarytreenode *x, thrnode *& y, thrnode *z) const noexcept;
+        // @brief a function that help get preorder traversal ThrBinarytree.
+        void _preorder(const Binarytreenode *x, thrnode *& y, thrnode *&z) noexcept;
+        // @brief a function that help get inorder traversal ThrBinarytree.
+        void _inorder(const Binarytreenode *x, thrnode *& y, thrnode *&z) noexcept;
+        // @brief a function that help get postorder traversal ThrBinarytree.
+        void _postorder(const Binarytreenode *x, thrnode *& y, thrnode *&z) noexcept;
         // @brief a function that help print tree.
         std::string __print(
             const Binarytreenode *x, 
@@ -193,6 +203,7 @@ class Binarytree {
         
         Binarytreenode * p;
         thrnode * t;
+        thrnode* null;
 };
 
 #include "Binarytree.cpp"

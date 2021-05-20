@@ -64,7 +64,10 @@ const int _pos
 );</p>
 </li>
 <li class="task-list-item">
-<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    Binarytreenode* erase(Binarytreenode * &amp;p);</p>
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    void erase(Binarytreenode *&amp; p);</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    void erase(thrnode *&amp; p);</p>
 </li>
 <li class="task-list-item">
 <p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    Binarytreenode* root() const noexcept {return p;}</p>
@@ -115,6 +118,34 @@ InputIterator lastInorder
 </li>
 <li class="task-list-item">
 <p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    std::vector<T> __postorder(const Binarytreenode *x) const noexcept;</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    thrnode* getPreThrBiTree() noexcept;</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    thrnode* getInThrBiTree() noexcept;</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    thrnode* getPostThrBiTree() noexcept;</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    thrnode* getBFSThrBiTree() noexcept;</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    void _preorder(const Binarytreenode *x, thrnode *&amp; y, thrnode *&amp;z) noexcept;</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    void _inorder(const Binarytreenode *x, thrnode *&amp; y, thrnode *&amp;z) noexcept;</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    void _postorder(const Binarytreenode *x, thrnode *&amp; y, thrnode *&amp;z) noexcept;</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    std::string __print(
+const Binarytreenode *x,
+const size_t depth,
+std::string(*tostr)(const T&amp;)
+) const no</p>
 </li>
 </ul>
 
