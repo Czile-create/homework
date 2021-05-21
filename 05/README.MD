@@ -36,6 +36,9 @@
 - [x]    std::vector<T> Inorder() const noexcept;
 - [x]    std::vector<T> Postorder() const noexcept;
 - [x]    std::vector<T> BFS() const noexcept;
+- [x]    std::vector<T> preorder() const noexcept;
+- [x]    std::vector<T> inorder() const noexcept;
+- [x]    std::vector<T> postorder() const noexcept;
 - [x]    std::string info() const noexcept;
 - [x]    std::string print() const noexcept;
 - [x]    size_t size() const noexcept;
@@ -64,4 +67,6 @@
             const Binarytreenode *x, 
             const size_t depth,
             std::string(*tostr)(const T&)
-         ) const no
+         ) const noexcept;
+
+- [X]    bool _ismatch(std::vector<T> a, std::vector<T> b);

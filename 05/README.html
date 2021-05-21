@@ -85,6 +85,15 @@ const int _pos
 <p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    std::vector<T> BFS() const noexcept;</p>
 </li>
 <li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    std::vector<T> preorder() const noexcept;</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    std::vector<T> inorder() const noexcept;</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    std::vector<T> postorder() const noexcept;</p>
+</li>
+<li class="task-list-item">
 <p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    std::string info() const noexcept;</p>
 </li>
 <li class="task-list-item">
@@ -145,7 +154,10 @@ InputIterator lastInorder
 const Binarytreenode *x,
 const size_t depth,
 std::string(*tostr)(const T&amp;)
-) const no</p>
+) const noexcept;</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">    bool _ismatch(std::vector<T> a, std::vector<T> b);</p>
 </li>
 </ul>
 
