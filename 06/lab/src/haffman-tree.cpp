@@ -1,13 +1,13 @@
 // #include "haffman-tree.h"
 
 haffman_tree::haffman_tree(): _val(0), _weight(0), _left(nullptr), _right(nullptr), _father(nullptr) {}
-haffman_tree::haffman_tree(wchar_t value): _val(value), _weight(0), _left(nullptr), _right(nullptr), _father(nullptr) {}
+haffman_tree::haffman_tree(char value): _val(value), _weight(0), _left(nullptr), _right(nullptr), _father(nullptr) {}
 haffman_tree::haffman_tree(haffman_tree* a, haffman_tree* b):
 _val(0), _weight(a->weight()+b->weight()), _left(a), _right(b), _father(nullptr) {
     a->getfather() = this;
     b->getfather() = this;
 }
-haffman_tree::haffman_tree(wchar_t value, unsigned long long w): 
+haffman_tree::haffman_tree(char value, unsigned long long w): 
 _val(value), _weight(w), _left(nullptr), _right(nullptr), _father(nullptr) {}
 
 bool haffman_tree::isleaf() const {
@@ -20,7 +20,7 @@ unsigned long long & haffman_tree::weight() {
     return _weight;
 }
 
-wchar_t & haffman_tree::val() {
+char & haffman_tree::val() {
     return _val;
 }
 

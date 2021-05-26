@@ -2,16 +2,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-map<wchar_t, unsigned long long> readfiles(vector<string> & filelist) {
-    map<wchar_t, unsigned long long> charmap;
+map<char, unsigned long long> readfiles(vector<string> & filelist) {
+    map<char, unsigned long long> charmap;
     for (auto filename: filelist) {
-        wifstream fin(filename, ios::in|ios::binary);                       //二进制打开文件
+        ifstream fin(filename, ios::in|ios::binary);                       //二进制打开文件
         if (fin.is_open() == false) {                               //若不存在
             cout<<"ERROR: \""<<filename<<"\" do NOT exists!"<<endl;
             exit(1);
         }
-        wchar_t tmp;
-        while ((tmp = fin.get()) != wchar_t(-1)) {
+        char tmp;
+        while (!fin.eof()) {
+            tmp = fin.get();
             auto it = charmap.find(tmp);                            //在字典中寻找tmp
             if (it != charmap.end())
                 it->second++;
@@ -23,7 +24,7 @@ map<wchar_t, unsigned long long> readfiles(vector<string> & filelist) {
     return charmap;
 }
 
-heap make_heap(map<wchar_t, unsigned long long> & charmap) {
+heap make_heap(map<char, unsigned long long> & charmap) {
     heap h;
     for (auto i: charmap) {
         haffman_tree * tmp = new haffman_tree(i.first, i.second);
@@ -48,8 +49,8 @@ haffman_tree * make_tree(heap h) {
     return h.front();
 }
 
-haffman_tree * make_unzip_tree(wifstream &fin) {
-    wchar_t ch;
+haffman_tree * make_unzip_tree(ifstream &fin) {
+    char ch;
     haffman_tree * tree = new haffman_tree;
     ch = fin.get();
     while (ch != '\"') {

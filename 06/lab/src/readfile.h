@@ -4,12 +4,12 @@
 #include "process.h"
 using namespace std;
 
-map<wchar_t, unsigned long long> readfiles(vector<string> &);
+map<char, unsigned long long> readfiles(vector<string> &);
 
-heap make_heap(map<wchar_t, unsigned long long> &);
+heap make_heap(map<char, unsigned long long> &);
 
 haffman_tree * make_tree(heap);
 
-haffman_tree * make_unzip_tree(wifstream &);
+haffman_tree * make_unzip_tree(ifstream &);
 
 #endif
