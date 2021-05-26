@@ -12,3 +12,5 @@
 第四次作业：[4.md](04/README.md)
 
 第五次作业：[5.md](05/README.md)
+
+第六次作业：[6.md](06/README.md)

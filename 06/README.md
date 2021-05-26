@@ -2,6 +2,8 @@
 
 ## 解压缩程序
 ```
-./hzip lock <filename, directory> -o <name.hz>
-./hzip unlock <name.hz> -o <directory>
+./hzip lock <filename> -o <outputname>
+./hzip unlock <zipped name>
 ```
+
+## 用孩子兄弟表示法表示中山大学的各个机构
