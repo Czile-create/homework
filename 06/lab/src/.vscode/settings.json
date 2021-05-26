@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "haffman-tree.h": "c",
+        "readfile.h": "c",
+        "vector": "c",
+        "process.h": "c"
+    }
+}
