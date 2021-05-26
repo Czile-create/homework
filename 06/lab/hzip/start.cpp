@@ -1,6 +1,16 @@
 #include "start.h"
 #include <bits/stdc++.h>
 using namespace std;
+void erase(haffman_tree *p) {
+    if (p == nullptr)
+        return;
+    if (p -> left()) 
+        erase(p -> getleft());
+    if (p -> right()) 
+        erase(p -> getright());
+    delete p;
+}
+
 void _zip(int argc, char * argv[]) {
     vector<string> filenamelist;
     for (int i=2; i<argc-2; i++)
@@ -13,6 +23,7 @@ void _zip(int argc, char * argv[]) {
     map<char, string> codetable = translate(tree);
     cout<<"Writing files..."<<endl;
     PrintString(codetable, filenamelist, argv[argc-1]);
+    erase(tree);
 }
 
 void _unzip(string filename) {
@@ -23,4 +34,5 @@ void _unzip(string filename) {
     }
     haffman_tree * tree = make_unzip_tree(fin);
     unzip(fin, tree);
+    erase(tree);
 }
