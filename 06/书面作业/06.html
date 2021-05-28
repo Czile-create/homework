@@ -1,0 +1,548 @@
+<!DOCTYPE html><html><head>
+      <title>06</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="file:////home/czile/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.5.18/node_modules/@shd101wyy/mume/dependencies/mathjax/MathJax.js" charset="UTF-8"></script>
+        
+      
+      
+      
+      <script type="text/javascript" src="file:////home/czile/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.5.18/node_modules/@shd101wyy/mume/dependencies/mermaid/mermaid.min.js" charset="UTF-8"></script>
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%AC%E5%85%AD%E6%AC%A1%E4%B9%A6%E9%9D%A2%E4%BD%9C%E4%B8%9A">&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7B2C;&#x516D;&#x6B21;&#x4E66;&#x9762;&#x4F5C;&#x4E1A;</h1>
+
+<center>
+<b>
+    19336035 &#x9648;&#x6893;&#x4E50;
+</b>
+</center>
+<hr>
+<ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%AC%E5%85%AD%E6%AC%A1%E4%B9%A6%E9%9D%A2%E4%BD%9C%E4%B8%9A">&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7B2C;&#x516D;&#x6B21;&#x4E66;&#x9762;&#x4F5C;&#x4E1A;</a>
+<ul>
+<li><a href="#n%E4%B8%AA%E9%A1%B6%E7%82%B9%E7%9A%84%E6%97%A0%E5%90%91%E5%9B%BE%E9%87%87%E7%94%A8%E9%82%BB%E6%8E%A5%E8%A1%A8%E5%82%A8%E5%AD%98%E5%9B%9E%E7%AD%94%E4%B8%8B%E5%88%97%E9%97%AE%E9%A2%98">n&#x4E2A;&#x9876;&#x70B9;&#x7684;&#x65E0;&#x5411;&#x56FE;&#xFF0C;&#x91C7;&#x7528;&#x90BB;&#x63A5;&#x8868;&#x50A8;&#x5B58;&#xFF0C;&#x56DE;&#x7B54;&#x4E0B;&#x5217;&#x95EE;&#x9898;</a>
+<ul>
+<li><a href="#%E5%9B%BE%E4%B8%AD%E8%BE%B9%E6%95%B0">&#x56FE;&#x4E2D;&#x8FB9;&#x6570;</a></li>
+<li><a href="#%E4%BB%BB%E6%84%8F%E4%B8%A4%E4%B8%AA%E9%A1%B6%E7%82%B9%E6%98%AF%E5%90%A6%E6%9C%89%E8%BE%B9%E7%9B%B8%E8%BF%9E">&#x4EFB;&#x610F;&#x4E24;&#x4E2A;&#x9876;&#x70B9;&#x662F;&#x5426;&#x6709;&#x8FB9;&#x76F8;&#x8FDE;</a></li>
+<li><a href="#%E4%BB%BB%E6%84%8F%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E5%BA%A6">&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5EA6;</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9C%89n%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E6%97%A0%E5%90%91%E5%9B%BE%E7%94%A8%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E5%82%A8%E5%AD%98%E5%9B%9E%E7%AD%94%E4%B8%8B%E5%88%97%E9%97%AE%E9%A2%98">&#x6709;n&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x65E0;&#x5411;&#x56FE;&#xFF0C;&#x7528;&#x90BB;&#x63A5;&#x77E9;&#x9635;&#x50A8;&#x5B58;&#xFF0C;&#x56DE;&#x7B54;&#x4E0B;&#x5217;&#x95EE;&#x9898;</a>
+<ul>
+<li><a href="#%E5%9B%BE%E4%B8%AD%E7%9A%84%E8%BE%B9%E6%95%B0">&#x56FE;&#x4E2D;&#x7684;&#x8FB9;&#x6570;</a></li>
+<li><a href="#%E4%BB%BB%E6%84%8F%E4%B8%A4%E4%B8%AA%E9%A1%B6%E7%82%B9%E6%98%AF%E5%90%A6%E6%9C%89%E8%BE%B9%E7%9B%B8%E8%BF%9E-1">&#x4EFB;&#x610F;&#x4E24;&#x4E2A;&#x9876;&#x70B9;&#x662F;&#x5426;&#x6709;&#x8FB9;&#x76F8;&#x8FDE;</a></li>
+<li><a href="#%E4%BB%BB%E6%84%8F%E4%B8%80%E4%B8%AA%E9%A1%B6%E7%82%B9%E7%9A%84%E5%BA%A6">&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x9876;&#x70B9;&#x7684;&#x5EA6;</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AF%81%E6%98%8E%E7%94%9F%E6%88%90%E6%A0%91%E4%B8%AD%E6%9C%80%E9%95%BF%E8%B7%AF%E5%BE%84%E7%9A%84%E8%B5%B7%E7%82%B9%E4%B8%8E%E7%BB%88%E7%82%B9%E5%BA%A6%E6%95%B0%E9%83%BD%E4%B8%BA1">&#x8BC1;&#x660E;&#xFF1A;&#x751F;&#x6210;&#x6811;&#x4E2D;&#x6700;&#x957F;&#x8DEF;&#x5F84;&#x7684;&#x8D77;&#x70B9;&#x4E0E;&#x7EC8;&#x70B9;&#x5EA6;&#x6570;&#x90FD;&#x4E3A;1</a></li>
+<li><a href="#%E5%B7%B2%E7%9F%A5%E5%9B%BE1%E6%B1%82%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E4%B8%8E%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E6%84%8F%E5%9B%BE">&#x5DF2;&#x77E5;&#x56FE;1&#xFF0C;&#x6C42;&#x90BB;&#x63A5;&#x77E9;&#x9635;&#x4E0E;&#x90BB;&#x63A5;&#x8868;&#x793A;&#x610F;&#x56FE;</a></li>
+<li><a href="#%E5%9B%BE2%E6%98%AF%E6%97%A0%E5%90%91%E5%B8%A6%E6%9D%83%E5%9B%BE%E5%88%86%E5%88%AB%E6%8C%89prim%E7%AE%97%E6%B3%95%E5%92%8Ckruskal%E7%AE%97%E6%B3%95%E6%B1%82%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91">&#x56FE;2&#x662F;&#x65E0;&#x5411;&#x5E26;&#x6743;&#x56FE;&#xFF0C;&#x5206;&#x522B;&#x6309;Prim&#x7B97;&#x6CD5;&#x548C;Kruskal&#x7B97;&#x6CD5;&#x6C42;&#x6700;&#x5C0F;&#x751F;&#x6210;&#x6811;</a></li>
+<li><a href="#%E5%88%A9%E7%94%A8dijkstra%E7%AE%97%E6%B3%95%E6%B1%82%E5%9B%BE3%E4%B8%ADv_1%E5%88%B0%E5%85%B6%E4%BB%96%E7%82%B9%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84">&#x5229;&#x7528;Dijkstra&#x7B97;&#x6CD5;&#x6C42;&#x56FE;3&#x4E2D;<span class="mathjax-exps">$v_1$</span>&#x5230;&#x5176;&#x4ED6;&#x70B9;&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F84;</a></li>
+<li><a href="#%E8%AF%81%E6%98%8E%E9%80%82%E5%BD%93%E6%8E%92%E5%88%97%E6%AC%A1%E5%BA%8F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E5%BE%97%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E4%B8%AD%E4%B8%BB%E5%AF%B9%E8%A7%92%E7%BA%BF%E4%BB%A5%E4%B8%8B%E5%85%83%E7%B4%A0%E5%85%A8%E9%83%A8%E4%B8%BA0">&#x8BC1;&#x660E;&#xFF1A;&#x9002;&#x5F53;&#x6392;&#x5217;&#x6B21;&#x5E8F;&#x53EF;&#x4EE5;&#x4F7F;&#x5F97;&#x6709;&#x5411;&#x65E0;&#x73AF;&#x56FE;&#x90BB;&#x63A5;&#x77E9;&#x9635;&#x4E2D;&#x4E3B;&#x5BF9;&#x89D2;&#x7EBF;&#x4EE5;&#x4E0B;&#x5143;&#x7D20;&#x5168;&#x90E8;&#x4E3A;0</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 class="mume-header" id="n%E4%B8%AA%E9%A1%B6%E7%82%B9%E7%9A%84%E6%97%A0%E5%90%91%E5%9B%BE%E9%87%87%E7%94%A8%E9%82%BB%E6%8E%A5%E8%A1%A8%E5%82%A8%E5%AD%98%E5%9B%9E%E7%AD%94%E4%B8%8B%E5%88%97%E9%97%AE%E9%A2%98">n&#x4E2A;&#x9876;&#x70B9;&#x7684;&#x65E0;&#x5411;&#x56FE;&#xFF0C;&#x91C7;&#x7528;&#x90BB;&#x63A5;&#x8868;&#x50A8;&#x5B58;&#xFF0C;&#x56DE;&#x7B54;&#x4E0B;&#x5217;&#x95EE;&#x9898;</h2>
+
+<h3 class="mume-header" id="%E5%9B%BE%E4%B8%AD%E8%BE%B9%E6%95%B0">&#x56FE;&#x4E2D;&#x8FB9;&#x6570;</h3>
+
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp">size_t <span class="token function">getSizeOfEdge</span><span class="token punctuation">(</span>Graph <span class="token operator">&amp;</span>G<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">accumulate</span><span class="token punctuation">(</span>
+        G<span class="token punctuation">.</span>v<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+        G<span class="token punctuation">.</span>v<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+        <span class="token number">0</span><span class="token punctuation">,</span> 
+        <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>size_t init<span class="token punctuation">,</span> <span class="token keyword">auto</span> <span class="token operator">&amp;</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> init <span class="token operator">+</span> v<span class="token punctuation">.</span>e<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="%E4%BB%BB%E6%84%8F%E4%B8%A4%E4%B8%AA%E9%A1%B6%E7%82%B9%E6%98%AF%E5%90%A6%E6%9C%89%E8%BE%B9%E7%9B%B8%E8%BF%9E">&#x4EFB;&#x610F;&#x4E24;&#x4E2A;&#x9876;&#x70B9;&#x662F;&#x5426;&#x6709;&#x8FB9;&#x76F8;&#x8FDE;</h3>
+
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token keyword">bool</span> <span class="token function">islinked</span><span class="token punctuation">(</span>node <span class="token operator">&amp;</span>i<span class="token punctuation">,</span> node <span class="token operator">&amp;</span>j<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">noexcept</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> k<span class="token operator">:</span> i<span class="token punctuation">.</span>e<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">==</span> <span class="token operator">&amp;</span>j<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="%E4%BB%BB%E6%84%8F%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E5%BA%A6">&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5EA6;</h3>
+
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp">size_t <span class="token function">numOfEdge</span><span class="token punctuation">(</span>node <span class="token operator">&amp;</span>i<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">noexcept</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> i<span class="token punctuation">.</span>e<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h2 class="mume-header" id="%E6%9C%89n%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E6%97%A0%E5%90%91%E5%9B%BE%E7%94%A8%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E5%82%A8%E5%AD%98%E5%9B%9E%E7%AD%94%E4%B8%8B%E5%88%97%E9%97%AE%E9%A2%98">&#x6709;n&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x65E0;&#x5411;&#x56FE;&#xFF0C;&#x7528;&#x90BB;&#x63A5;&#x77E9;&#x9635;&#x50A8;&#x5B58;&#xFF0C;&#x56DE;&#x7B54;&#x4E0B;&#x5217;&#x95EE;&#x9898;</h2>
+
+<h3 class="mume-header" id="%E5%9B%BE%E4%B8%AD%E7%9A%84%E8%BE%B9%E6%95%B0">&#x56FE;&#x4E2D;&#x7684;&#x8FB9;&#x6570;</h3>
+
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp">size_t <span class="token function">getSizeOfEdge</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span>size_t<span class="token operator">&gt;&gt;</span> <span class="token operator">&amp;</span>p<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">accumulate</span> <span class="token punctuation">(</span>
+        p<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+        p<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token number">0</span><span class="token punctuation">,</span> 
+        <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>size_t init<span class="token punctuation">,</span> <span class="token keyword">auto</span> <span class="token operator">&amp;</span>t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> init <span class="token operator">+</span> <span class="token function">accumulate</span><span class="token punctuation">(</span>
+                t<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                t<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token number">0</span><span class="token punctuation">,</span> 
+                <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>size_t init<span class="token punctuation">,</span> <span class="token keyword">auto</span> <span class="token operator">&amp;</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> init <span class="token operator">+</span> <span class="token keyword">bool</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="%E4%BB%BB%E6%84%8F%E4%B8%A4%E4%B8%AA%E9%A1%B6%E7%82%B9%E6%98%AF%E5%90%A6%E6%9C%89%E8%BE%B9%E7%9B%B8%E8%BF%9E-1">&#x4EFB;&#x610F;&#x4E24;&#x4E2A;&#x9876;&#x70B9;&#x662F;&#x5426;&#x6709;&#x8FB9;&#x76F8;&#x8FDE;</h3>
+
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token keyword">bool</span> <span class="token function">islinked</span><span class="token punctuation">(</span>
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span>size_t<span class="token operator">&gt;&gt;</span> <span class="token operator">&amp;</span>p<span class="token punctuation">,</span>
+    size_t i<span class="token punctuation">,</span>
+    size_t j
+<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">noexcept</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="%E4%BB%BB%E6%84%8F%E4%B8%80%E4%B8%AA%E9%A1%B6%E7%82%B9%E7%9A%84%E5%BA%A6">&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x9876;&#x70B9;&#x7684;&#x5EA6;</h3>
+
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp">size_t <span class="token function">numOfEdge</span><span class="token punctuation">(</span>
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span>size_t<span class="token operator">&gt;&gt;</span> <span class="token operator">&amp;</span>p<span class="token punctuation">,</span>
+    size_t i
+<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token keyword">noexcept</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">accumulate</span><span class="token punctuation">(</span>
+        p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token number">0</span><span class="token punctuation">,</span> 
+        <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>size_t init<span class="token punctuation">,</span> <span class="token keyword">auto</span> <span class="token operator">&amp;</span>t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> init <span class="token operator">+</span> <span class="token keyword">bool</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h2 class="mume-header" id="%E8%AF%81%E6%98%8E%E7%94%9F%E6%88%90%E6%A0%91%E4%B8%AD%E6%9C%80%E9%95%BF%E8%B7%AF%E5%BE%84%E7%9A%84%E8%B5%B7%E7%82%B9%E4%B8%8E%E7%BB%88%E7%82%B9%E5%BA%A6%E6%95%B0%E9%83%BD%E4%B8%BA1">&#x8BC1;&#x660E;&#xFF1A;&#x751F;&#x6210;&#x6811;&#x4E2D;&#x6700;&#x957F;&#x8DEF;&#x5F84;&#x7684;&#x8D77;&#x70B9;&#x4E0E;&#x7EC8;&#x70B9;&#x5EA6;&#x6570;&#x90FD;&#x4E3A;1</h2>
+
+<p><strong>&#x8BC1;&#x660E;</strong>&#xFF1A;&#x5047;&#x5B9A;&#x5DF2;&#x7ECF;&#x786E;&#x5B9A;&#x4E86;&#x751F;&#x6210;&#x6811;&#x6700;&#x957F;&#x8DEF;&#x5F84;&#x4E3A;&#x6570;&#x5217;<span class="mathjax-exps">$\{a_k, k\in N^+\}$</span>&#xFF0C;&#x5047;&#x5B9A;<span class="mathjax-exps">$a_1$</span>&#x5EA6;&#x6570;&#x5E76;&#x975E;&#x4E3A;1&#xFF0C;&#x5219;&#x5B58;&#x5728;&#x989D;&#x5916;&#x4E00;&#x70B9;&#x4E0E;<span class="mathjax-exps">$a_1$</span>&#x76F8;&#x8FDE;&#x3002;&#x53EF;&#x4EE5;&#x8BC1;&#x660E;&#x8FD9;&#x4E00;&#x70B9;&#x4E00;&#x5B9A;&#x4E0D;&#x5728;&#x6570;&#x5217;&#x4E2D;&#xFF0C;&#x56E0;&#x4E3A;&#x751F;&#x6210;&#x6811;&#x4E0D;&#x53EF;&#x80FD;&#x6709;&#x56DE;&#x8DEF;&#x3002;&#x800C;&#x53EA;&#x8981;&#x627E;&#x5230;&#x8FD9;&#x4E00;&#x70B9;<span class="mathjax-exps">$a_0$</span>&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x4F1A;&#x6709;&#x66F4;&#x957F;&#x7684;&#x8DEF;&#x5F84;<span class="mathjax-exps">$\{a_k, k\in N\}$</span>&#x3002;</p>
+<h2 class="mume-header" id="%E5%B7%B2%E7%9F%A5%E5%9B%BE1%E6%B1%82%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E4%B8%8E%E9%82%BB%E6%8E%A5%E8%A1%A8%E7%A4%BA%E6%84%8F%E5%9B%BE">&#x5DF2;&#x77E5;&#x56FE;1&#xFF0C;&#x6C42;&#x90BB;&#x63A5;&#x77E9;&#x9635;&#x4E0E;&#x90BB;&#x63A5;&#x8868;&#x793A;&#x610F;&#x56FE;</h2>
+
+<center>
+<div class="mermaid">graph LR
+A[v1] --- B[v6] --- C[v4] --- D[v5] --- E[v3] --- F[v2]
+A --- C --- F --- D
+A --- F
+</div><p>&#x56FE;1</p>
+</center>
+<p>&#x90BB;&#x63A5;&#x77E9;&#x9635;&#x8868;&#x793A;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p></p><div class="mathjax-exps">$$\begin{bmatrix}  0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1\\ 1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 0\\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 0\\ 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1\\ 0 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\ 1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\ \end{bmatrix} $$</div><p></p><p>&#x90BB;&#x63A5;&#x8868;&#x8868;&#x793A;&#x5982;&#x4E0B;&#xFF1A;</p>
+<center>
+<div class="mermaid">graph LR
+A[v1] --&gt; B(2) --&gt; C(4) --&gt; D(6) --&gt; Y(nullptr)
+E[v2] --&gt; F(1) --&gt; G(3) --&gt; K(4) --&gt; L(5) --&gt; Y
+H[v3] --&gt; I(2) --&gt; J(5) --&gt; Y
+M[v4] --&gt; N(1) --&gt; O(2) --&gt; P(5) --&gt; Q(6) --&gt; Y
+R[v5] --&gt; S(2) --&gt; T(3) --&gt; U(4) --&gt; Y
+V[v6] --&gt; W(1) --&gt; X(4) --&gt; Y
+</div></center>
+&#x6DF1;&#x5EA6;&#x4F18;&#x5148;&#x904D;&#x5386;&#xFF1A;$v_1, v_2, v_3, v_5, v_4, v_6$.
+<p>&#x5E7F;&#x5EA6;&#x4F18;&#x5148;&#x904D;&#x5386;&#xFF1A;<span class="mathjax-exps">$v_1, v_2, v_4, v_6, v_3, v_5$</span>.</p>
+<h2 class="mume-header" id="%E5%9B%BE2%E6%98%AF%E6%97%A0%E5%90%91%E5%B8%A6%E6%9D%83%E5%9B%BE%E5%88%86%E5%88%AB%E6%8C%89prim%E7%AE%97%E6%B3%95%E5%92%8Ckruskal%E7%AE%97%E6%B3%95%E6%B1%82%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91">&#x56FE;2&#x662F;&#x65E0;&#x5411;&#x5E26;&#x6743;&#x56FE;&#xFF0C;&#x5206;&#x522B;&#x6309;Prim&#x7B97;&#x6CD5;&#x548C;Kruskal&#x7B97;&#x6CD5;&#x6C42;&#x6700;&#x5C0F;&#x751F;&#x6210;&#x6811;</h2>
+
+<center>
+<div class="mermaid">graph LR
+a(a) --- |6| b(b)
+a --- |3| c(c)
+c --- |6| d(d)
+d --- |1| b
+c --- |6| e(e)
+e --- |2| f(f)
+d --- |5| f
+b --- |5| f
+</div><p>&#x56FE;2</p>
+</center>
+<p>Prim &#x7B97;&#x6CD5;&#x751F;&#x6210;&#x6700;&#x5C0F;&#x751F;&#x6210;&#x6811;&#x56FE;&#x793A;&#xFF1A;</p>
+<center>
+<div class="mermaid">graph LR
+a(a) --- |&#x7B2C;&#x4E00;&#x6B65;, 3| c(c)
+a --- |&#x7B2C;&#x4E8C;&#x6B65;, 6| b(b)
+b --- |&#x7B2C;&#x4E09;&#x6B65;, 1| d(d)
+b --- |&#x7B2C;&#x56DB;&#x6B65;, 5| f(f)
+f --- |&#x7B2C;&#x4E94;&#x6B65;, 2| e(e)
+</div></center>
+<p>Kruskal &#x7B97;&#x6CD5;&#x751F;&#x6210;&#x6700;&#x5C0F;&#x751F;&#x6210;&#x6811;&#x56FE;&#x793A;&#xFF1A;</p>
+<center class="mume-header" id="%E5%88%A9%E7%94%A8dijkstra%E7%AE%97%E6%B3%95%E6%B1%82%E5%9B%BE3%E4%B8%ADv_1%E5%88%B0%E5%85%B6%E4%BB%96%E7%82%B9%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84">
+<div class="mermaid">graph LR
+b(b) --- |&#x7B2C;&#x4E00;&#x6B65;, 1| d(d)
+f(f) --- |&#x7B2C;&#x4E8C;&#x6B65;, 2| e(e)
+a(a) --- |&#x7B2C;&#x4E09;&#x6B65;, 3| c(c)
+b --- |&#x7B2C;&#x56DB;&#x6B65;, 5| f(f)
+a --- |&#x7B2C;&#x4E94;&#x6B65;, 6| b(b)
+</div></center>
+##  &#x5229;&#x7528;Dijkstra&#x7B97;&#x6CD5;&#x6C42;&#x56FE;3&#x4E2D;$v_1$&#x5230;&#x5176;&#x4ED6;&#x70B9;&#x7684;&#x6700;&#x77ED;&#x8DEF;&#x5F84;
+
+<center>
+<div class="mermaid">graph LR
+v3 --&gt; |10| v1
+v1 --&gt; |45| v2
+v2 --&gt; |15| v5
+v1 --&gt; |15| v3
+v1 --&gt; |15| v5
+v3 --&gt; |60| v4
+v3 --&gt; |10| v2
+v2 --&gt; |20| v4
+v4 --&gt; |30| v2
+v2 --&gt; |15| v6
+v4 --&gt; |20| v6
+</div><p>&#x56FE;3</p>
+</center>
+<p><strong>&#x89E3;&#x7B54;</strong>&#xFF1A;&#x5982;&#x4E0B;&#x8868;</p>
+<center>
+<table>
+<thead>
+<tr>
+<th>&#x6B21;&#x5E8F;</th>
+<th>&#x6E90;&#x70B9;</th>
+<th>&#x7EC8;&#x70B9;</th>
+<th>&#x6700;&#x77ED;&#x8DEF;&#x5F84;</th>
+<th>&#x6700;&#x77ED;&#x8DEF;&#x5F84;&#x957F;&#x5EA6;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td rowspan="5"><span class="mathjax-exps">$v_1$</span></td>
+<td><span class="mathjax-exps">$v_3$</span></td>
+<td><span class="mathjax-exps">$v_1, v_3$</span></td>
+<td>15</td>
+</tr>
+<tr>
+<td>2</td>
+
+<td><span class="mathjax-exps">$v_5$</span></td>
+<td><span class="mathjax-exps">$v_1, v_5$</span></td>
+<td>15</td>
+</tr>
+<tr>
+<td>3</td>
+
+<td><span class="mathjax-exps">$v_2$</span></td>
+<td><span class="mathjax-exps">$v_1, v_3, v_2$</span></td>
+<td>25</td>
+</tr>
+<tr>
+<td>4</td>
+
+<td><span class="mathjax-exps">$v_6$</span></td>
+<td><span class="mathjax-exps">$v_1, v_3, v_2, v_6$</span></td>
+<td>40</td>
+</tr>
+<tr>
+<td>5</td>
+
+<td><span class="mathjax-exps">$v_4$</span></td>
+<td><span class="mathjax-exps">$v_1, v_3, v_2, v_4$</span></td>
+<td>45</td>
+</tr>
+</tbody>
+</table>
+</center>
+<h2 class="mume-header" id="%E8%AF%81%E6%98%8E%E9%80%82%E5%BD%93%E6%8E%92%E5%88%97%E6%AC%A1%E5%BA%8F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E5%BE%97%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E4%B8%AD%E4%B8%BB%E5%AF%B9%E8%A7%92%E7%BA%BF%E4%BB%A5%E4%B8%8B%E5%85%83%E7%B4%A0%E5%85%A8%E9%83%A8%E4%B8%BA0">&#x8BC1;&#x660E;&#xFF1A;&#x9002;&#x5F53;&#x6392;&#x5217;&#x6B21;&#x5E8F;&#x53EF;&#x4EE5;&#x4F7F;&#x5F97;&#x6709;&#x5411;&#x65E0;&#x73AF;&#x56FE;&#x90BB;&#x63A5;&#x77E9;&#x9635;&#x4E2D;&#x4E3B;&#x5BF9;&#x89D2;&#x7EBF;&#x4EE5;&#x4E0B;&#x5143;&#x7D20;&#x5168;&#x90E8;&#x4E3A;0</h2>
+
+
+      </div>
+      
+      
+    
+    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
+    
+    
+    
+    
+    
+  
+    </body></html>
