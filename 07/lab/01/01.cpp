@@ -4,7 +4,7 @@ using namespace std;
 graph readfile(const string & filename) {
     ifstream fin(filename, ios::in);
     if (!fin.is_open())
-        throw "Not such file or directory"
+        throw "Not such file or directory";
     auto n = 0;
     graph ans;
     fin >> n;
@@ -97,20 +97,16 @@ void printInfo(graph & edge, int start) {
 int main() {
     try {
         graph edge = readfile("data.mdb");
-    } catch (const char * c) {
-        cerr << c;
-    }
-    vector<bool> status(edge.size(), 0);
-    auto k = 0;
-    cout << "Input the order of the node you want to know...\n> ";
-    cin >> k;
-    try {
+        vector<bool> status(edge.size(), 0);
+        auto k = 0;
+        cout << "Input the order of the node you want to know...\n> ";
+        cin >> k;
         print(DFS(edge, k, status), "DFS");
         fill(status.begin(), status.end(), 0);
         print(BFS(edge, k, status), "BFS");
         printInfo(edge, k);
     } catch (const char *c) {
-        cerr << c;
+        cerr << c << endl;
     }
     return 0;
 }
