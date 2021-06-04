@@ -1,83 +1,43 @@
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+import requests
+from math import  *
 import time
-import re
-#vertion 1.0
-driver = webdriver.Chrome()
-driver.get('https://map.baidu.com/')
-driver.find_element_by_xpath("/html/body[@class='pc']/div[@id='app']/div[@id='left-panel']/div[@id='searchbox']/div[@id='searchbox-container']/div[@id='sole-searchbox-content']/div[@class='searchbox-content-button right-button route-button loading-button']").click()
-driver.find_element_by_xpath("/html/body[@class='pc']/div[@id='app']/div[@id='left-panel']/div[@id='searchbox']/div[@id='searchbox-container']/div[@id='route-searchbox-content']/div[@class='route-header']/div[@class='searchbox-content-common route-tabs']/div[@class='tab-item walk-tab']/span").click()
-#单击第一个按钮进入搜索界面
+from retrying import retry
 
-def startSpide(start,end):
-    #start是第一输入框的内容，end是第二个，startSpide爬两地点间时间文字信息
-    driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/div[1]/div[2]/div[2]/div/div[2]/div[1]/input').clear()
-    driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/div[1]/div[2]/div[2]/div/div[2]/div[2]/input').clear()
-    #清空两个输入框，即问号按键
+@retry
+def getJson(url):
+    return requests.get(url).json()
 
-    driver.find_element_by_xpath("/html/body[@class='pc']/div[@id='app']/div[@id='left-panel']/div[@id='searchbox']/div[@id='searchbox-container']/div[@id='route-searchbox-content']/div[@class='routebox']/div[@class='searchbox-content-common routebox-content']/div[@class='routebox-inputs']/div[@class='routebox-input route-start']/input[@class='route-start-input']").send_keys(start)
-    driver.find_element_by_xpath("/html/body[@class='pc']/div[@id='app']/div[@id='left-panel']/div[@id='searchbox']/div[@id='searchbox-container']/div[@id='route-searchbox-content']/div[@class='routebox']/div[@class='searchbox-content-common routebox-content']/div[@class='routebox-inputs']/div[@class='routebox-input route-end']/input[@class='route-end-input']").send_keys(end)
-    #在两个框内输入字符start和end
-    
-    driver.find_element_by_xpath("/html/body[@class='pc']/div[@id='app']/div[@id='left-panel']/div[@id='searchbox']/button[@id='search-button']").click()
-    #点击搜索
-    
-    time.sleep(2)
-    try:
-        driver.find_element_by_xpath("/html/body[@class='pc']/div[@id='app']/div[@id='left-panel']/ul[@id='cards-level1']/li[1]/div[@class='RouteAddressOuterBkg']/div[@class='RouteAddressInnerBkg']/div[@id='RouteAddress_DIV1']/div[@class='sel_body']/div[@id='RADIV_BODY1']/div[@id='RADiv_ResItem1']/div[@id='RA_ResItem_1']/table/tbody/tr[1]/td[2]").click()
-    except:
-        a = 1
-    else:
-        time.sleep(2)
-        # pass
-    try:
-        driver.find_element_by_xpath("/html/body[@class='pc']/div[@id='app']/div[@id='left-panel']/ul[@id='cards-level1']/li[1]/div[@class='RouteAddressOuterBkg']/div[@class='RouteAddressInnerBkg']/div[@id='RouteAddress_DIV0']/div[@class='sel_body']/div[@id='RADIV_BODY0']/div[@id='RADiv_ResItem0']/div[@id='RA_ResItem_0']/table/tbody/tr[1]/td[2]").click()
-    except:
-        a = 1
-    #出现模糊地址的时候选择第一个准确地址
-    
-    time.sleep(2)
-    try:#超时异常处理
-        WebDriverWait(driver,5,0.5).until(EC.presence_of_element_located((By.XPATH, "/html/body[@class='pc']/div[@id='app']/div[@id='left-panel']/ul[@id='cards-level1']/li[1]/div[@id='nav_container']/div[@class='route_contentWrapper walk_cont']/div[@id='route_content_walk']/div[@class='special']/div[@class='drive']/div[@class='con']/div[@class='navtrans-navlist-view active expand navtrans-type-walk']/div[@class='navtrans-navlist-title']/p[@class='navtrans-navlist-title-p title-info']/span[@class='last']")))
-    except:
-        driver.find_element_by_xpath("/html/body[@class='pc']/div[@id='app']/div[@id='left-panel']/div[@id='searchbox']/button[@id='search-button']").click()
-        try:
-            driver.find_element_by_xpath("/html/body[@class='pc']/div[@id='app']/div[@id='left-panel']/ul[@id='cards-level1']/li[1]/div[@class='RouteAddressOuterBkg']/div[@class='RouteAddressInnerBkg']/div[@id='RouteAddress_DIV1']/div[@class='sel_body']/div[@id='RADIV_BODY1']/div[@id='RADiv_ResItem1']/div[@id='RA_ResItem_1']/table/tbody/tr[1]/td[2]").click()
-        except:
-            a = 1
-        time.sleep(2)
-        try:
-            driver.find_element_by_xpath("/html/body[@class='pc']/div[@id='app']/div[@id='left-panel']/ul[@id='cards-level1']/li[1]/div[@class='RouteAddressOuterBkg']/div[@class='RouteAddressInnerBkg']/div[@id='RouteAddress_DIV0']/div[@class='sel_body']/div[@id='RADIV_BODY0']/div[@id='RADiv_ResItem0']/div[@id='RA_ResItem_0']/table/tbody/tr[1]/td[2]").click()
-        except:
-            a = 1
-    try:
-        span2=driver.find_element_by_xpath("/html/body[@class='pc']/div[@id='app']/div[@id='left-panel']/ul[@id='cards-level1']/li[1]/div[@id='nav_container']/div[@class='route_contentWrapper walk_cont']/div[@id='route_content_walk']/div[@class='special']/div[@class='drive']/div[@class='con']/div[@class='navtrans-navlist-view active expand navtrans-type-walk']/div[@class='navtrans-navlist-title']/p[@class='navtrans-navlist-title-p title-info']/span[@class='last']").get_attribute('textContent')
-    except:
-        span2 = '-1'
-    #找到文字的信息
-    span2=transform(span2)
-    print(span2,end=" ")
+# 获取城市的经纬度
+def getPosition(address):
+    print(address, end=" ")
+    url= 'http://api.map.baidu.com/geocoder?output=json&address='+str(address)
+    answer = getJson(url)    
+    lon = float(answer['result']['location']['lng'])
+    lat = float(answer['result']['location']['lat'])
+    print((lon, lat))
+    return (lon, lat)
 
-def transform(span):
-    # 把文字转换为以米为单位的数字
-    if span.find("公里")!= -1:
-        span = re.sub('公里','',span)
-        span = re.sub('约','',span)
-        span = int(float(span)*1000)
-    else:
-        span = re.sub('约','',span)
-        span = re.sub('米','',span)
-        span = int(float(span))
-    return span
-location=['肇庆', '佛山', '广州', '东莞', '惠州', '江门', '中山', '深圳', '澳门', '香港', '珠海']
+
+def getDistance(Pos1, Pos2):
+    # 将十进制度数转化为弧度
+    lon1, lat1, lon2, lat2 = map(radians, [Pos1[0], Pos1[1], Pos2[0], Pos2[1]])
+    # haversine公式
+    deltalon = lon2 - lon1 
+    deltalat = lat2 - lat1 
+    a = sin(deltalat/2)**2 + cos(lat1) * cos(lat2) * sin(deltalon/2)**2
+    c = 2 * asin(sqrt(a)) 
+    r = 6371 # 地球平均半径，单位为公里
+    return c * r * 1000
+
+location=['肇庆市', '佛山市', '广州市', '东莞市', '惠州市', '江门市', '中山市', '深圳市', '澳门特别行政区', '香港特别行政区', '珠海市']
+position=list(map(getPosition, location))
+
+# 由于百度地图的api无法获取香港和澳门的地址（获取到的地址为北京王府井附近），故此处单独修改地址
+position[-3] = (114.171202, 22.277469)
+position[-2] = (113.543117, 22.186883)
+
 for i in range(len(location)):
     print(location[i], end=" ")
     for j in range(len(location)):
-        if(j==i):
-            print(0,end=" ")
-        else:
-            startSpide(location[i],location[j])
+        print(int(getDistance(position[i], position[j])), end=" ")
     print()
