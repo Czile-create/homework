@@ -1,0 +1,848 @@
+<!DOCTYPE html><html><head>
+      <title>07</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="file:////home/czile/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.5.21/node_modules/@shd101wyy/mume/dependencies/mathjax/MathJax.js" charset="UTF-8"></script>
+        
+      
+      
+      
+      <script type="text/javascript" src="file:////home/czile/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.5.21/node_modules/@shd101wyy/mume/dependencies/mermaid/mermaid.min.js" charset="UTF-8"></script>
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%83%E6%AC%A1%E4%B9%A6%E9%9D%A2%E4%BD%9C%E4%B8%9A">&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0E;&#x7B97;&#x6CD5;&#x7B2C;&#x4E03;&#x6B21;&#x4E66;&#x9762;&#x4F5C;&#x4E1A;</h1>
+
+<hr>
+<center>
+<b> 19336035 &#x9648;&#x6893;&#x4E50; </b> <br>
+<b> &#x90E8;&#x5206;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x5728; <a href="gitee.com/Czile/homework">gitee.com/Czile/homework</a> &#x4E0A;&#x627E;&#x5230; </b><br>
+<u>*&#x672C;&#x4F5C;&#x4E1A;&#x4E2D;&#x5173;&#x4E8E;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x56FE;&#x4F7F;&#x7528;mermaid&#x5B9E;&#x73B0;&#xFF0C;&#x5F53;&#x6839;&#x8282;&#x70B9;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5B50;&#x6811;&#x65F6;&#x53EF;&#x80FD;&#x663E;&#x793A;&#x5F02;&#x5E38;*</u>
+</center>
+<hr>
+<ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%AC%E4%B8%83%E6%AC%A1%E4%B9%A6%E9%9D%A2%E4%BD%9C%E4%B8%9A">&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0E;&#x7B97;&#x6CD5;&#x7B2C;&#x4E03;&#x6B21;&#x4E66;&#x9762;&#x4F5C;&#x4E1A;</a>
+<ul>
+<li><a href="#%E7%AE%80%E7%AD%94%E9%A2%98">&#x7B80;&#x7B54;&#x9898;</a>
+<ul>
+<li><a href="#1-%E7%94%BB%E5%87%BA%E7%BA%BF%E6%80%A7%E8%A1%A8-a-b-c-d-e-f-g-%E8%BF%9B%E8%A1%8C%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2e%E4%B8%8Eg%E7%9A%84%E7%A4%BA%E6%84%8F%E5%9B%BE">1. &#x753B;&#x51FA;&#x7EBF;&#x6027;&#x8868; (a, b, c, d, e, f, g) &#x8FDB;&#x884C;&#x6298;&#x534A;&#x641C;&#x7D22;e&#x4E0E;g&#x7684;&#x793A;&#x610F;&#x56FE;&#x3002;</a></li>
+<li><a href="#2-%E7%94%BB%E5%87%BA%E9%95%BF%E5%BA%A6%E4%B8%BA10%E7%9A%84%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E5%88%A4%E5%AE%9A%E6%A0%91%E6%B1%82%E7%AD%89%E6%A6%82%E7%8E%87%E6%97%B6%E6%9F%A5%E6%89%BE%E6%88%90%E5%8A%9F%E5%92%8C%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E5%B9%B3%E5%9D%87%E6%9F%A5%E6%89%BE%E9%95%BF%E5%BA%A6">2. &#x753B;&#x51FA;&#x957F;&#x5EA6;&#x4E3A;10&#x7684;&#x6298;&#x534A;&#x67E5;&#x627E;&#x5224;&#x5B9A;&#x6811;&#xFF0C;&#x6C42;&#x7B49;&#x6982;&#x7387;&#x65F6;&#x67E5;&#x627E;&#x6210;&#x529F;&#x548C;&#x4E0D;&#x6210;&#x529F;&#x7684;&#x5E73;&#x5747;&#x67E5;&#x627E;&#x957F;&#x5EA6;</a></li>
+<li><a href="#3-%E5%B0%86%E6%95%B0%E5%88%97-24-15-38-27-121-76-130-%E4%BE%9D%E6%AC%A1%E6%8F%92%E5%85%A5%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E8%AF%B7%E7%94%BB%E5%87%BA%E6%9C%80%E5%90%8E%E7%BB%93%E6%9E%9C%E4%BB%A5%E5%8F%8A%E7%AD%89%E6%A6%82%E7%8E%87%E6%83%85%E5%86%B5%E4%B8%8B%E6%9F%A5%E6%89%BE%E7%9A%84%E5%B9%B3%E5%9D%87%E9%95%BF%E5%BA%A6">3. &#x5C06;&#x6570;&#x5217; (24, 15, 38, 27, 121, 76, 130) &#x4F9D;&#x6B21;&#x63D2;&#x5165;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#xFF0C;&#x8BF7;&#x753B;&#x51FA;&#x6700;&#x540E;&#x7ED3;&#x679C;&#x4EE5;&#x53CA;&#x7B49;&#x6982;&#x7387;&#x60C5;&#x51B5;&#x4E0B;&#x67E5;&#x627E;&#x7684;&#x5E73;&#x5747;&#x957F;&#x5EA6;</a></li>
+<li><a href="#4-%E8%AF%B7%E5%B0%86%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E7%9A%84%E5%80%BC-1-8-%E5%A1%AB%E5%85%A5%E7%A9%BA%E6%A0%BC%E4%B8%AD">4. &#x8BF7;&#x5C06;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#x7684;&#x503C; (1-8) &#x586B;&#x5165;&#x7A7A;&#x683C;&#x4E2D;</a></li>
+<li><a href="#5-%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E5%A6%82%E5%9B%BE5-1%E6%89%80%E7%A4%BA%E8%AF%B7%E5%88%86%E5%88%AB%E7%94%BB%E5%87%BA%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A090%E5%92%8C47%E4%B9%8B%E5%90%8E%E7%9A%84%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91">5. &#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#x5982;&#x56FE;5-1&#x6240;&#x793A;&#xFF0C;&#x8BF7;&#x5206;&#x522B;&#x753B;&#x51FA;&#x5220;&#x9664;&#x5143;&#x7D20;90&#x548C;47&#x4E4B;&#x540E;&#x7684;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;</a></li>
+<li><a href="#6-%E5%B7%B2%E7%9F%A5%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0hk-k-mod-12-%E5%85%B3%E9%94%AE%E5%AD%97%E5%BA%8F%E5%88%97%E4%B8%BA-25-37-52-43-84-99-120-15-26-11-70-82-%E7%94%A8%E6%8B%89%E9%93%BE%E6%B3%95%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81%E6%9E%84%E9%80%A0%E6%95%A3%E5%88%97%E8%A1%A8%E6%B1%82%E5%B9%B3%E5%9D%87%E6%9F%A5%E6%89%BE%E6%AC%A1%E6%95%B0">6. &#x5DF2;&#x77E5;&#x6563;&#x5217;&#x51FD;&#x6570;H(k) = k mod 12, &#x5173;&#x952E;&#x5B57;&#x5E8F;&#x5217;&#x4E3A; (25, 37, 52, 43, 84, 99, 120, 15, 26, 11, 70, 82), &#x7528;&#x62C9;&#x94FE;&#x6CD5;&#x5904;&#x7406;&#x51B2;&#x7A81;&#xFF0C;&#x6784;&#x9020;&#x6563;&#x5217;&#x8868;&#xFF0C;&#x6C42;&#x5E73;&#x5747;&#x67E5;&#x627E;&#x6B21;&#x6570;&#x3002;</a></li>
+<li><a href="#7-%E8%AE%BE%E6%95%A3%E5%88%97%E8%A1%A8%E9%95%BF%E5%BA%A6%E4%B8%BA15%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0-hk-k-mod-13-%E5%85%B3%E9%94%AE%E5%AD%97%E9%9B%86%E5%90%88%E4%B8%BA-53-17-12-61-89-70-87-25-64-46-%E4%BD%BF%E7%94%A8%E4%BA%8C%E6%AC%A1%E6%8E%A2%E6%B5%8B%E6%B3%95%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81%E6%9E%84%E9%80%A0%E6%95%A3%E5%88%97%E8%A1%A8%E5%B9%B6%E8%AE%A1%E7%AE%97%E5%B9%B3%E5%9D%87%E6%9F%A5%E6%89%BE%E6%AC%A1%E6%95%B0">7. &#x8BBE;&#x6563;&#x5217;&#x8868;&#x957F;&#x5EA6;&#x4E3A;15&#xFF0C;&#x6563;&#x5217;&#x51FD;&#x6570; H(k) = k mod 13&#xFF0C; &#x5173;&#x952E;&#x5B57;&#x96C6;&#x5408;&#x4E3A; (53, 17, 12, 61, 89, 70, 87, 25, 64, 46), &#x4F7F;&#x7528;&#x4E8C;&#x6B21;&#x63A2;&#x6D4B;&#x6CD5;&#x5904;&#x7406;&#x51B2;&#x7A81;&#xFF0C;&#x6784;&#x9020;&#x6563;&#x5217;&#x8868;&#x5E76;&#x8BA1;&#x7B97;&#x5E73;&#x5747;&#x67E5;&#x627E;&#x6B21;&#x6570;&#x3002;</a></li>
+<li><a href="#8-%E7%BB%99%E5%AE%9A%E5%85%B3%E9%94%AE%E5%AD%97%E5%BA%8F%E5%88%97%E4%B8%BA-26-25-20-34-28-24-45-64-42-%E8%A3%85%E5%A1%AB%E5%9B%A0%E5%AD%90%E4%B8%BA-06-%E7%94%A8%E7%BA%BF%E6%80%A7%E6%8E%A2%E6%B5%8B%E6%B3%95%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81%E6%9E%84%E9%80%A0%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0%E7%94%BB%E5%87%BA%E6%95%A3%E5%88%97%E8%A1%A8">8. &#x7ED9;&#x5B9A;&#x5173;&#x952E;&#x5B57;&#x5E8F;&#x5217;&#x4E3A; (26, 25, 20, 34, 28, 24, 45, 64, 42), &#x88C5;&#x586B;&#x56E0;&#x5B50;&#x4E3A; 0.6&#xFF0C; &#x7528;&#x7EBF;&#x6027;&#x63A2;&#x6D4B;&#x6CD5;&#x5904;&#x7406;&#x51B2;&#x7A81;&#xFF0C;&#x6784;&#x9020;&#x6563;&#x5217;&#x51FD;&#x6570;&#xFF0C;&#x753B;&#x51FA;&#x6563;&#x5217;&#x8868;&#x3002;</a></li>
+</ul>
+</li>
+<li><a href="#%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E9%A2%98">&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;&#x9898;</a>
+<ul>
+<li><a href="#1-%E8%AE%BE%E8%AE%A1%E9%A1%BA%E5%BA%8F%E8%A1%A8%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95%E6%8A%8A%E5%93%A8%E5%85%B5%E8%AE%BE%E5%9C%A8%E4%B8%8B%E6%A0%87%E9%AB%98%E7%AB%AF">1. &#x8BBE;&#x8BA1;&#x987A;&#x5E8F;&#x8868;&#x67E5;&#x627E;&#x7B97;&#x6CD5;&#xFF0C;&#x628A;&#x54E8;&#x5175;&#x8BBE;&#x5728;&#x4E0B;&#x6807;&#x9AD8;&#x7AEF;&#x3002;</a></li>
+<li><a href="#2-%E6%B1%82%E7%BB%99%E5%AE%9A%E8%8A%82%E7%82%B9%E5%9C%A8%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E7%9A%84%E5%B1%82%E6%95%B0">2. &#x6C42;&#x7ED9;&#x5B9A;&#x8282;&#x70B9;&#x5728;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#x7684;&#x5C42;&#x6570;</a></li>
+<li><a href="#3-%E7%BC%96%E5%86%99%E7%AE%97%E6%B3%95%E6%B1%82%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E4%B8%8A%E4%BB%BB%E6%84%8F%E4%B8%A4%E4%B8%AA%E4%B8%8D%E5%90%8C%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88">3. &#x7F16;&#x5199;&#x7B97;&#x6CD5;&#x6C42;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#x4E0A;&#x4EFB;&#x610F;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x8282;&#x70B9;&#x7684;&#x6700;&#x8FD1;&#x516C;&#x5171;&#x7956;&#x5148;</a></li>
+<li><a href="#4-%E5%88%A4%E5%AE%9A%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91">4. &#x5224;&#x5B9A;&#x4E8C;&#x53C9;&#x6811;&#x662F;&#x5426;&#x4E3A;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;</a></li>
+<li><a href="#5-%E4%BD%BF%E7%94%A8%E7%BA%BF%E6%80%A7%E6%8E%A2%E6%B5%8B%E6%B3%95%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81%E7%9A%84%E6%95%A3%E5%88%97%E8%A1%A8%E4%B8%AD%E8%AE%BE%E8%AE%A1%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C">5. &#x4F7F;&#x7528;&#x7EBF;&#x6027;&#x63A2;&#x6D4B;&#x6CD5;&#x89E3;&#x51B3;&#x51B2;&#x7A81;&#x7684;&#x6563;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x8BBE;&#x8BA1;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x5220;&#x9664;&#x64CD;&#x4F5C;</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%9D%E8%80%83%E9%A2%98">&#x601D;&#x8003;&#x9898;</a>
+<ul>
+<li><a href="#%E5%85%B3%E4%BA%8Emd5">&#x5173;&#x4E8E;MD5</a>
+<ul>
+<li><a href="#%E7%AC%AC%E4%B8%80%E6%AD%A5-%E6%89%A9%E5%B1%95%E4%BD%8D%E6%95%B0">&#x7B2C;&#x4E00;&#x6B65;&#xFF1A; &#x6269;&#x5C55;&#x4F4D;&#x6570;</a></li>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E6%89%A9%E5%B1%95%E9%95%BF%E5%BA%A6">&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A; &#x6269;&#x5C55;&#x957F;&#x5EA6;</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E6%AD%A5-%E5%88%9D%E5%A7%8B%E5%8C%96md5%E5%AF%84%E5%AD%98%E5%99%A8">&#x7B2C;&#x4E09;&#x6B65;&#xFF1A; &#x521D;&#x59CB;&#x5316;MD5&#x5BC4;&#x5B58;&#x5668;</a></li>
+<li><a href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5-%E8%AE%A1%E7%AE%97">&#x7B2C;&#x56DB;&#x6B65;&#xFF1A; &#x8BA1;&#x7B97;</a></li>
+<li><a href="#%E7%AC%AC%E4%BA%94%E6%AD%A5-%E8%BE%93%E5%87%BA">&#x7B2C;&#x4E94;&#x6B65;&#xFF1A; &#x8F93;&#x51FA;</a></li>
+<li><a href="#%E5%BA%94%E7%94%A8sup11supref">&#x5E94;&#x7528;<sup>11</sup></a>
+<ul>
+<li><a href="#%E7%94%A8%E4%BA%8E%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86">&#x7528;&#x4E8E;&#x5BC6;&#x7801;&#x7BA1;&#x7406;</a></li>
+<li><a href="#%E7%94%B5%E5%AD%90%E7%AD%BE%E5%90%8D">&#x7535;&#x5B50;&#x7B7E;&#x540D;</a></li>
+<li><a href="#%E5%9E%83%E5%9C%BE%E9%82%AE%E4%BB%B6%E7%AD%9B%E9%80%89">&#x5783;&#x573E;&#x90AE;&#x4EF6;&#x7B5B;&#x9009;</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%BB%E7%BB%93">&#x603B;&#x7ED3;</a></li>
+<li><a href="#ref">Ref</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 class="mume-header" id="%E7%AE%80%E7%AD%94%E9%A2%98">&#x7B80;&#x7B54;&#x9898;</h2>
+
+<h3 class="mume-header" id="1-%E7%94%BB%E5%87%BA%E7%BA%BF%E6%80%A7%E8%A1%A8-a-b-c-d-e-f-g-%E8%BF%9B%E8%A1%8C%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2e%E4%B8%8Eg%E7%9A%84%E7%A4%BA%E6%84%8F%E5%9B%BE">1. &#x753B;&#x51FA;&#x7EBF;&#x6027;&#x8868; (a, b, c, d, e, f, g) &#x8FDB;&#x884C;&#x6298;&#x534A;&#x641C;&#x7D22;e&#x4E0E;g&#x7684;&#x793A;&#x610F;&#x56FE;&#x3002;</h3>
+
+<table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>e</th>
+<th>f</th>
+<th>g</th>
+<th>Find</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>-</td>
+<td>-</td>
+<td>mid</td>
+<td>-</td>
+<td>-</td>
+<td><strong>j</strong></td>
+<td><strong>g</strong></td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><strong>i</strong> &amp;&amp; <strong>mid</strong></td>
+<td>j</td>
+<td>-</td>
+<td><strong>e</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="2-%E7%94%BB%E5%87%BA%E9%95%BF%E5%BA%A6%E4%B8%BA10%E7%9A%84%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E5%88%A4%E5%AE%9A%E6%A0%91%E6%B1%82%E7%AD%89%E6%A6%82%E7%8E%87%E6%97%B6%E6%9F%A5%E6%89%BE%E6%88%90%E5%8A%9F%E5%92%8C%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E5%B9%B3%E5%9D%87%E6%9F%A5%E6%89%BE%E9%95%BF%E5%BA%A6">2. &#x753B;&#x51FA;&#x957F;&#x5EA6;&#x4E3A;10&#x7684;&#x6298;&#x534A;&#x67E5;&#x627E;&#x5224;&#x5B9A;&#x6811;&#xFF0C;&#x6C42;&#x7B49;&#x6982;&#x7387;&#x65F6;&#x67E5;&#x627E;&#x6210;&#x529F;&#x548C;&#x4E0D;&#x6210;&#x529F;&#x7684;&#x5E73;&#x5747;&#x67E5;&#x627E;&#x957F;&#x5EA6;</h3>
+
+<center>
+<div class="mermaid">flowchart 
+5 --- 2 --- 1
+2 --- 3 --- 4
+5 --- 8 --- 7
+8 --- 9 --- 10
+</div></center>
+<p>&#x67E5;&#x627E;&#x7684;&#x5E73;&#x5747;&#x957F;&#x5EA6;&#x4E3A;<br>
+</p><div class="mathjax-exps">$$\frac{1}{10} \times 1 + \frac{2}{10}\times2 + \frac{4}{10}\times3 + \frac{2}{10}\times4 = 2.5$$</div><p></p>
+<h3 class="mume-header" id="3-%E5%B0%86%E6%95%B0%E5%88%97-24-15-38-27-121-76-130-%E4%BE%9D%E6%AC%A1%E6%8F%92%E5%85%A5%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E8%AF%B7%E7%94%BB%E5%87%BA%E6%9C%80%E5%90%8E%E7%BB%93%E6%9E%9C%E4%BB%A5%E5%8F%8A%E7%AD%89%E6%A6%82%E7%8E%87%E6%83%85%E5%86%B5%E4%B8%8B%E6%9F%A5%E6%89%BE%E7%9A%84%E5%B9%B3%E5%9D%87%E9%95%BF%E5%BA%A6">3. &#x5C06;&#x6570;&#x5217; (24, 15, 38, 27, 121, 76, 130) &#x4F9D;&#x6B21;&#x63D2;&#x5165;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#xFF0C;&#x8BF7;&#x753B;&#x51FA;&#x6700;&#x540E;&#x7ED3;&#x679C;&#x4EE5;&#x53CA;&#x7B49;&#x6982;&#x7387;&#x60C5;&#x51B5;&#x4E0B;&#x67E5;&#x627E;&#x7684;&#x5E73;&#x5747;&#x957F;&#x5EA6;</h3>
+
+<center>
+<div class="mermaid">flowchart
+24 --- 15
+24 --- 38
+38 --- 27
+38 --- 121
+121 --- 76
+121 --- 130
+</div></center>
+&#x67E5;&#x627E;&#x5E73;&#x5747;&#x957F;&#x5EA6;&#x4E3A;&#xFF1A;
+$$ \frac{1}{7}\times1+\frac{2}{7}\times2+\frac{2}{7}\times3+\frac{2}{7}\times4=\frac{19}{7}$$
+<h3 class="mume-header" id="4-%E8%AF%B7%E5%B0%86%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E7%9A%84%E5%80%BC-1-8-%E5%A1%AB%E5%85%A5%E7%A9%BA%E6%A0%BC%E4%B8%AD">4. &#x8BF7;&#x5C06;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#x7684;&#x503C; (1-8) &#x586B;&#x5165;&#x7A7A;&#x683C;&#x4E2D;</h3>
+
+<center>
+<div class="mermaid">flowchart
+3 --- 1 --- 2
+3 --- 7 --- 5 --- 4
+5 --- 6
+7 --- 8
+</div></center>
+<h3 class="mume-header" id="5-%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E5%A6%82%E5%9B%BE5-1%E6%89%80%E7%A4%BA%E8%AF%B7%E5%88%86%E5%88%AB%E7%94%BB%E5%87%BA%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A090%E5%92%8C47%E4%B9%8B%E5%90%8E%E7%9A%84%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91">5. &#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#x5982;&#x56FE;5-1&#x6240;&#x793A;&#xFF0C;&#x8BF7;&#x5206;&#x522B;&#x753B;&#x51FA;&#x5220;&#x9664;&#x5143;&#x7D20;90&#x548C;47&#x4E4B;&#x540E;&#x7684;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;</h3>
+
+<table>
+<tbody><tr>
+<th> 5-1 </th>
+<th> 5-2 </th>
+<th> 5-3 </th>
+</tr>
+<tr>
+<th>
+<div class="mermaid">flowchart
+75 --- 47 --- 30
+47 --- 60 --- 50 --- 55
+60 --- 70
+75 --- 85 --- 90 --- 88
+</div></th>
+<th>
+<div class="mermaid">flowchart
+75 --- 47 --- 30
+47 --- 60 --- 50 --- 55
+60 --- 70
+75 --- 85 --- 88
+</div></th>
+<th>
+<div class="mermaid">flowchart
+75 --- 50 --- 30
+50 --- 60 --- 55
+60 --- 70
+75 --- 85 --- 90 --- 88
+</div></th>
+</tr><tr>
+</tr></tbody></table>
+<h3 class="mume-header" id="6-%E5%B7%B2%E7%9F%A5%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0hk-k-mod-12-%E5%85%B3%E9%94%AE%E5%AD%97%E5%BA%8F%E5%88%97%E4%B8%BA-25-37-52-43-84-99-120-15-26-11-70-82-%E7%94%A8%E6%8B%89%E9%93%BE%E6%B3%95%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81%E6%9E%84%E9%80%A0%E6%95%A3%E5%88%97%E8%A1%A8%E6%B1%82%E5%B9%B3%E5%9D%87%E6%9F%A5%E6%89%BE%E6%AC%A1%E6%95%B0">6. &#x5DF2;&#x77E5;&#x6563;&#x5217;&#x51FD;&#x6570;H(k) = k mod 12, &#x5173;&#x952E;&#x5B57;&#x5E8F;&#x5217;&#x4E3A; (25, 37, 52, 43, 84, 99, 120, 15, 26, 11, 70, 82), &#x7528;&#x62C9;&#x94FE;&#x6CD5;&#x5904;&#x7406;&#x51B2;&#x7A81;&#xFF0C;&#x6784;&#x9020;&#x6563;&#x5217;&#x8868;&#xFF0C;&#x6C42;&#x5E73;&#x5747;&#x67E5;&#x627E;&#x6B21;&#x6570;&#x3002;</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+<th style="text-align:center">11</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">84</td>
+<td style="text-align:center">25</td>
+<td style="text-align:center">26</td>
+<td style="text-align:center">99</td>
+<td style="text-align:center">52</td>
+<td style="text-align:center"><strong>NA</strong></td>
+<td style="text-align:center">43</td>
+<td style="text-align:center" colspan="3"><strong>NA</strong></td>
+
+
+<td style="text-align:center">70</td>
+<td style="text-align:center">11</td>
+</tr>
+<tr>
+<td style="text-align:center">120</td>
+<td style="text-align:center">37</td>
+<td style="text-align:center"><strong>NA</strong></td>
+<td style="text-align:center">15</td>
+<td style="text-align:center" colspan="6"><strong>NA</strong></td>
+
+
+
+
+
+<td style="text-align:center">82</td>
+<td style="text-align:center"><strong>NA</strong></td>
+</tr>
+<tr>
+<td style="text-align:center" colspan="12"><strong>NA</strong></td>
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+</tbody>
+</table>
+<p>&#x5E73;&#x5747;&#x67E5;&#x627E;&#x957F;&#x5EA6;&#x4E3A;<br>
+</p><div class="mathjax-exps">$$\frac{8}{12}\times1+\frac{4}{12}\times2 = \frac{4}{3}$$</div><p></p>
+<h3 class="mume-header" id="7-%E8%AE%BE%E6%95%A3%E5%88%97%E8%A1%A8%E9%95%BF%E5%BA%A6%E4%B8%BA15%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0-hk-k-mod-13-%E5%85%B3%E9%94%AE%E5%AD%97%E9%9B%86%E5%90%88%E4%B8%BA-53-17-12-61-89-70-87-25-64-46-%E4%BD%BF%E7%94%A8%E4%BA%8C%E6%AC%A1%E6%8E%A2%E6%B5%8B%E6%B3%95%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81%E6%9E%84%E9%80%A0%E6%95%A3%E5%88%97%E8%A1%A8%E5%B9%B6%E8%AE%A1%E7%AE%97%E5%B9%B3%E5%9D%87%E6%9F%A5%E6%89%BE%E6%AC%A1%E6%95%B0">7. &#x8BBE;&#x6563;&#x5217;&#x8868;&#x957F;&#x5EA6;&#x4E3A;15&#xFF0C;&#x6563;&#x5217;&#x51FD;&#x6570; H(k) = k mod 13&#xFF0C; &#x5173;&#x952E;&#x5B57;&#x96C6;&#x5408;&#x4E3A; (53, 17, 12, 61, 89, 70, 87, 25, 64, 46), &#x4F7F;&#x7528;&#x4E8C;&#x6B21;&#x63A2;&#x6D4B;&#x6CD5;&#x5904;&#x7406;&#x51B2;&#x7A81;&#xFF0C;&#x6784;&#x9020;&#x6563;&#x5217;&#x8868;&#x5E76;&#x8BA1;&#x7B97;&#x5E73;&#x5747;&#x67E5;&#x627E;&#x6B21;&#x6570;&#x3002;</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+<th style="text-align:center">11</th>
+<th style="text-align:center">12</th>
+<th style="text-align:center">13</th>
+<th style="text-align:center">14</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&#x5143;&#x7D20;</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">53</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">17</td>
+<td style="text-align:center">70</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">46</td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">61</td>
+<td style="text-align:center">87</td>
+<td style="text-align:center">89</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center" colspan="2">25</td>
+
+</tr>
+<tr>
+<td style="text-align:center">&#x51B2;&#x7A81;&#x6570;</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center" colspan="2">0</td>
+
+<td style="text-align:center" colspan="2">1</td>
+
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center" colspan="2">1</td>
+
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p>&#x56E0;&#x6B64;&#x5E73;&#x5747;&#x67E5;&#x627E;&#x6B21;&#x6570;&#x4E3A;&#xFF1A;<br>
+</p><div class="mathjax-exps">$$\frac{7}{10}\times1+\frac{2}{10}\times2+\frac{1}{10}\times5=1.6$$</div><p></p>
+<h3 class="mume-header" id="8-%E7%BB%99%E5%AE%9A%E5%85%B3%E9%94%AE%E5%AD%97%E5%BA%8F%E5%88%97%E4%B8%BA-26-25-20-34-28-24-45-64-42-%E8%A3%85%E5%A1%AB%E5%9B%A0%E5%AD%90%E4%B8%BA-06-%E7%94%A8%E7%BA%BF%E6%80%A7%E6%8E%A2%E6%B5%8B%E6%B3%95%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81%E6%9E%84%E9%80%A0%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0%E7%94%BB%E5%87%BA%E6%95%A3%E5%88%97%E8%A1%A8">8. &#x7ED9;&#x5B9A;&#x5173;&#x952E;&#x5B57;&#x5E8F;&#x5217;&#x4E3A; (26, 25, 20, 34, 28, 24, 45, 64, 42), &#x88C5;&#x586B;&#x56E0;&#x5B50;&#x4E3A; 0.6&#xFF0C; &#x7528;&#x7EBF;&#x6027;&#x63A2;&#x6D4B;&#x6CD5;&#x5904;&#x7406;&#x51B2;&#x7A81;&#xFF0C;&#x6784;&#x9020;&#x6563;&#x5217;&#x51FD;&#x6570;&#xFF0C;&#x753B;&#x51FA;&#x6563;&#x5217;&#x8868;&#x3002;</h3>
+
+<p>&#x7531;&#x88C5;&#x586B;&#x56E0;&#x5B50;&#xFF0C;&#x77E5;&#x8868;&#x957F;&#x4E3A;15&#xFF0C;&#x4E8E;&#x662F;&#x53EF;&#x4EE5;&#x8BBE;&#x6563;&#x5217;&#x51FD;&#x6570;&#x4E3A; <span class="mathjax-exps">$H(k)=k\space mod\space 15$</span>, &#x6784;&#x9020;&#x7684;&#x6563;&#x5217;&#x51FD;&#x6570;&#x5982;&#x8868;&#x6240;&#x793A;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+<th style="text-align:center">11</th>
+<th style="text-align:center">12</th>
+<th style="text-align:center">13</th>
+<th style="text-align:center">14</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&#x5143;&#x7D20;</td>
+<td style="text-align:center">26</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">28</td>
+<td style="text-align:center">42</td>
+<td style="text-align:center" colspan="2">-</td>
+
+<td style="text-align:center">45</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">34</td>
+<td style="text-align:center" colspan="2">-</td>
+
+<td style="text-align:center">24</td>
+<td style="text-align:center">25</td>
+<td style="text-align:center">64</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+<h2 class="mume-header" id="%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E9%A2%98">&#x7B97;&#x6CD5;&#x8BBE;&#x8BA1;&#x9898;</h2>
+
+<h3 class="mume-header" id="1-%E8%AE%BE%E8%AE%A1%E9%A1%BA%E5%BA%8F%E8%A1%A8%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95%E6%8A%8A%E5%93%A8%E5%85%B5%E8%AE%BE%E5%9C%A8%E4%B8%8B%E6%A0%87%E9%AB%98%E7%AB%AF">1. &#x8BBE;&#x8BA1;&#x987A;&#x5E8F;&#x8868;&#x67E5;&#x627E;&#x7B97;&#x6CD5;&#xFF0C;&#x628A;&#x54E8;&#x5175;&#x8BBE;&#x5728;&#x4E0B;&#x6807;&#x9AD8;&#x7AEF;&#x3002;</h3>
+
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token comment">// NOTE: There may be a memory leak.</span>
+<span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">InputIterator</span><span class="token punctuation">,</span> <span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">&gt;</span>
+InputIterator <span class="token function">find</span> <span class="token punctuation">(</span>InputIterator first<span class="token punctuation">,</span> InputIterator last<span class="token punctuation">,</span> <span class="token keyword">const</span> T<span class="token operator">&amp;</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">*</span>last <span class="token operator">=</span> val<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> <span class="token operator">*</span>first <span class="token operator">!=</span> val<span class="token punctuation">;</span> <span class="token operator">++</span>first<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> first<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="2-%E6%B1%82%E7%BB%99%E5%AE%9A%E8%8A%82%E7%82%B9%E5%9C%A8%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E7%9A%84%E5%B1%82%E6%95%B0">2. &#x6C42;&#x7ED9;&#x5B9A;&#x8282;&#x70B9;&#x5728;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#x7684;&#x5C42;&#x6570;</h3>
+
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">&gt;</span>
+<span class="token keyword">int</span> <span class="token function">depth</span><span class="token punctuation">(</span>Binary_Search_Tree<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span> <span class="token operator">*</span> root<span class="token punctuation">,</span> <span class="token keyword">const</span> T <span class="token operator">&amp;</span>val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">-&gt;</span> val <span class="token operator">==</span> val<span class="token punctuation">)</span> 
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>root <span class="token operator">-&gt;</span> val <span class="token operator">&lt;</span> val<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">(</span>root <span class="token operator">-&gt;</span> right<span class="token punctuation">,</span> val<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token punctuation">(</span>root <span class="token operator">-&gt;</span> left<span class="token punctuation">,</span> val<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="3-%E7%BC%96%E5%86%99%E7%AE%97%E6%B3%95%E6%B1%82%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E4%B8%8A%E4%BB%BB%E6%84%8F%E4%B8%A4%E4%B8%AA%E4%B8%8D%E5%90%8C%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88">3. &#x7F16;&#x5199;&#x7B97;&#x6CD5;&#x6C42;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;&#x4E0A;&#x4EFB;&#x610F;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x8282;&#x70B9;&#x7684;&#x6700;&#x8FD1;&#x516C;&#x5171;&#x7956;&#x5148;</h3>
+
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">&gt;</span>
+Binary_Search_Tree<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span> <span class="token operator">*</span> <span class="token function">Ancestor</span><span class="token punctuation">(</span>
+    <span class="token keyword">const</span> Binary_Search_Tree <span class="token operator">&lt;</span>T<span class="token operator">&gt;</span> <span class="token operator">*</span> a<span class="token punctuation">,</span> 
+    <span class="token keyword">const</span> Binary_Search_Tree <span class="token operator">&lt;</span>T<span class="token operator">&gt;</span> <span class="token operator">*</span> b
+<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> i <span class="token operator">=</span> a<span class="token punctuation">;</span> i <span class="token operator">!=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span> i <span class="token operator">=</span> i <span class="token operator">-&gt;</span> parents<span class="token punctuation">)</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> j <span class="token operator">=</span> b<span class="token punctuation">;</span> j <span class="token operator">!=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span> j <span class="token operator">=</span> j <span class="token operator">-&gt;</span> parents<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> j<span class="token punctuation">)</span>
+                <span class="token keyword">return</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="4-%E5%88%A4%E5%AE%9A%E4%BA%8C%E5%8F%89%E6%A0%91%E6%98%AF%E5%90%A6%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91">4. &#x5224;&#x5B9A;&#x4E8C;&#x53C9;&#x6811;&#x662F;&#x5426;&#x4E3A;&#x4E8C;&#x53C9;&#x6392;&#x5E8F;&#x6811;</h3>
+
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">&gt;</span>
+<span class="token keyword">bool</span> <span class="token function">isSortTree</span><span class="token punctuation">(</span>Binary_Tree<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span> <span class="token operator">*</span> root<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">-&gt;</span> left <span class="token operator">&amp;&amp;</span> root <span class="token operator">-&gt;</span> left <span class="token operator">-&gt;</span> val <span class="token operator">&gt;</span> root <span class="token operator">-&gt;</span> val <span class="token operator">||</span>
+        root <span class="token operator">-&gt;</span> right <span class="token operator">&amp;&amp;</span> root <span class="token operator">-&gt;</span> right <span class="token operator">-&gt;</span> val <span class="token operator">&lt;</span> root <span class="token operator">-&gt;</span> val<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">isSortTree</span><span class="token punctuation">(</span>root <span class="token operator">-&gt;</span> left<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">isSortTree</span><span class="token punctuation">(</span>root <span class="token operator">-&gt;</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="5-%E4%BD%BF%E7%94%A8%E7%BA%BF%E6%80%A7%E6%8E%A2%E6%B5%8B%E6%B3%95%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81%E7%9A%84%E6%95%A3%E5%88%97%E8%A1%A8%E4%B8%AD%E8%AE%BE%E8%AE%A1%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C">5. &#x4F7F;&#x7528;&#x7EBF;&#x6027;&#x63A2;&#x6D4B;&#x6CD5;&#x89E3;&#x51B3;&#x51B2;&#x7A81;&#x7684;&#x6563;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x8BBE;&#x8BA1;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x5220;&#x9664;&#x64CD;&#x4F5C;</h3>
+
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token keyword">template</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">&gt;</span>
+<span class="token keyword">void</span> <span class="token function">HashErase</span><span class="token punctuation">(</span>HashList<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span> <span class="token operator">&amp;</span>p<span class="token punctuation">,</span> <span class="token keyword">const</span> T <span class="token operator">&amp;</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">auto</span> location <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">Hash</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>
+        <span class="token punctuation">;</span> 
+        <span class="token operator">*</span>location <span class="token operator">!=</span> val <span class="token operator">&amp;&amp;</span> <span class="token operator">*</span>location <span class="token operator">!=</span> p<span class="token punctuation">.</span><span class="token keyword">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        location <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>location <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">==</span> p<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">?</span> p<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> location<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">*</span>location <span class="token operator">==</span> p<span class="token punctuation">.</span><span class="token keyword">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">throw</span> <span class="token string">&quot;Invalid value to delete&quot;</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>
+        <span class="token punctuation">;</span>
+        <span class="token operator">*</span>location <span class="token operator">!=</span> p<span class="token punctuation">.</span><span class="token keyword">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        location <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>location <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">==</span> p<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">?</span> p<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> location<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token punctuation">)</span>
+        <span class="token operator">*</span>location <span class="token operator">=</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>location <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">==</span> p<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">?</span> p<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> location <span class="token punctuation">)</span><span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h2 class="mume-header" id="%E6%80%9D%E8%80%83%E9%A2%98">&#x601D;&#x8003;&#x9898;</h2>
+
+<h3 class="mume-header" id="%E5%85%B3%E4%BA%8Emd5">&#x5173;&#x4E8E;MD5</h3>
+
+<p>MD5&#x662F;&#x4E00;&#x79CD;&#x6458;&#x8981;&#x7B97;&#x6CD5;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;&#x6563;&#x5217;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x80FD;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x6570;&#x636E;&#x7684;&#x7279;&#x5F81;&#x3002;<br>
+&#x6211;&#x4EEC;&#x9996;&#x5148;&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A; <span class="mathjax-exps">$b$</span> &#x4F4D;&#x6D88;&#x606F;&#x4F5C;&#x4E3A;&#x8F93;&#x5165;&#xFF0C;&#x5E76;&#x4E14;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x627E;&#x5230;&#x5B83;&#x7684;&#x6D88;&#x606F;&#x6458;&#x8981;&#x3002;&#x8FD9;&#x91CC; <span class="mathjax-exps">$b$</span> &#x662F;&#x4E00;&#x4E2A;&#x4EFB;&#x610F;&#x7684;&#x975E;&#x8D1F;&#x6574;&#x6570;&#xFF1B;b &#x53EF;&#x4EE5;&#x662F;&#x96F6;&#xFF0C;&#x5B83;&#x4E0D;&#x5FC5;&#x662F; 8 &#x7684;&#x500D;&#x6570;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x662F;&#x4EFB;&#x610F;&#x5927;&#x7684;&#x3002;&#x6211;&#x4EEC;&#x60F3;&#x8C61;&#x4E00;&#x4E0B;&#x5199;&#x4E0B;&#x7684;&#x6D88;&#x606F;&#x4F4D;&#x5982;&#x4E0B;&#xFF1A;<br>
+</p><div class="mathjax-exps">$$m_0 m_1 ... m_{b-1}$$</div><br>
+&#x6211;&#x4EEC;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x4E94;&#x4E2A;&#x6B65;&#x9AA4;&#x6765;&#x8BA1;&#x7B97;&#x6D88;&#x606F;&#x7684;&#x6D88;&#x606F;&#x6458;&#x8981;&#x3002;<p></p>
+<h4 class="mume-header" id="%E7%AC%AC%E4%B8%80%E6%AD%A5-%E6%89%A9%E5%B1%95%E4%BD%8D%E6%95%B0">&#x7B2C;&#x4E00;&#x6B65;&#xFF1A; &#x6269;&#x5C55;&#x4F4D;&#x6570;</h4>
+
+<p>&#x5728;&#x672C;&#x64CD;&#x4F5C;&#x4E2D;&#xFF0C;&#x6570;&#x5217;&#x5C06;&#x4F1A;&#x88AB;&#x6269;&#x5C55;&#x4E3A;&#x4E00;&#x4E2A;&#x201C;&#x6807;&#x51C6;&#x6570;&#x5217;&#x201D;&#xFF0C;&#x6240;&#x8C13;&#x6807;&#x51C6;&#x6570;&#x5217;&#x5373;&#x8981;&#x6C42;&#x4E3A;&#x6700;&#x7EC8;&#x4F4D;&#x6570;&#x5BF9;512&#x6C42;&#x4F59;&#x6570;&#x7684;&#x7ED3;&#x679C;&#x4E3A;448&#xFF0C;&#x4E8E;&#x662F;&#x6269;&#x5C55;&#x4F4D;&#x6570;&#x4E3A;1-512&#x4F4D;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x4E0D;&#x80FD;&#x662F;0&#x4F4D;&#xFF0C;&#x5373;&#x4FBF;&#x662F;&#x6700;&#x521D;&#x7684;&#x6570;&#x5217;&#x672C;&#x8EAB;&#x5C31;&#x662F;&#x201C;&#x6807;&#x51C6;&#x6570;&#x5217;&#x201D;&#xFF0C;&#x4E5F;&#x8981;&#x6269;&#x5C55;512&#x4F4D;&#x3002;&#x5047;&#x5B9A;&#x6269;&#x5C55;&#x7684;&#x4F4D;&#x6570;&#x662F;C&#x4F4D;&#xFF0C;&#x6269;&#x5C55;&#x64CD;&#x4F5C;&#x4E3A;&#xFF1A;</p>
+<ol>
+<li>&#x4EE4;<span class="mathjax-exps">$a_b=1$</span>.</li>
+<li>&#x4EE4;<span class="mathjax-exps">$a_c = 0, 0 &lt; c - b &lt; C$</span></li>
+</ol>
+<h4 class="mume-header" id="%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E6%89%A9%E5%B1%95%E9%95%BF%E5%BA%A6">&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A; &#x6269;&#x5C55;&#x957F;&#x5EA6;</h4>
+
+<p>&#x7528;&#x4E00;&#x4E2A;64&#x4F4D;&#x7684;&#x6570;&#x5217;&#x8868;&#x793A;b&#xFF0C;&#x5373;&#x8868;&#x793A;&#x6269;&#x5C55;&#x4F4D;&#x6570;&#x524D;&#x7684;&#x4F4D;&#x6570;&#xFF0C;&#x8865;&#x5728;&#x6269;&#x5C55;&#x4F4D;&#x6570;&#x4E4B;&#x540E;&#xFF0C;&#x8FD9;&#x6837;&#xFF0C;&#x6570;&#x5217;&#x7684;&#x957F;&#x5EA6;&#x53D8;&#x6210;512&#x7684;&#x500D;&#x6570;&#x3002;</p>
+<h4 class="mume-header" id="%E7%AC%AC%E4%B8%89%E6%AD%A5-%E5%88%9D%E5%A7%8B%E5%8C%96md5%E5%AF%84%E5%AD%98%E5%99%A8">&#x7B2C;&#x4E09;&#x6B65;&#xFF1A; &#x521D;&#x59CB;&#x5316;MD5&#x5BC4;&#x5B58;&#x5668;</h4>
+
+<p>MD5&#x8FD0;&#x7B97;&#x8981;&#x7528;&#x5230;&#x4E00;&#x4E2A;128&#x4F4D;&#x7684;MD5&#x7F13;&#x5B58;&#x5668;&#xFF0C;&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x4E2D;&#x95F4;&#x53D8;&#x91CF;&#x548C;&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#x3002;&#x8BE5;&#x7F13;&#x5B58;&#x5668;&#x53C8;&#x53EF;&#x770B;&#x6210;&#x662F;4&#x4E2A;32&#x4F4D;&#x7684;&#x5BC4;&#x5B58;&#x5668;A&#x3001;B&#x3001;C&#x3001;D&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x4E3A;</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp">word A<span class="token operator">:</span> <span class="token number">01</span> <span class="token number">23</span> <span class="token number">45</span> <span class="token number">67</span>
+word B<span class="token operator">:</span> <span class="token number">89</span> ab cd ef
+word C<span class="token operator">:</span> fe dc ba <span class="token number">98</span>
+word D<span class="token operator">:</span> <span class="token number">76</span> <span class="token number">54</span> <span class="token number">32</span> <span class="token number">10</span>
+</pre><h4 class="mume-header" id="%E7%AC%AC%E5%9B%9B%E6%AD%A5-%E8%AE%A1%E7%AE%97">&#x7B2C;&#x56DB;&#x6B65;&#xFF1A; &#x8BA1;&#x7B97;</h4>
+
+<p>&#x6211;&#x4EEC;&#x9996;&#x5148;&#x5B9A;&#x4E49;&#x56DB;&#x4E2A;&#x8F85;&#x52A9;&#x51FD;&#x6570;&#xFF0C;&#x6BCF;&#x4E2A;&#x51FD;&#x6570;&#x5C06;&#x4E09;&#x4E2A; 32 &#x4F4D;&#x5B57;&#x4F5C;&#x4E3A;&#x8F93;&#x5165;&#xFF0C;&#x5E76;&#x4EA7;&#x751F;&#x4E00;&#x4E2A; 32 &#x4F4D;&#x5B57;&#x4F5C;&#x4E3A;&#x8F93;&#x51FA;&#x3002;</p>
+<p></p><div class="mathjax-exps">$$F(X,Y,Z) = XY or not(X) Z\\ G(X,Y,Z) = XZ or Y not(Z)\\ H(X,Y,Z) = X xor Y xor Z\\ I(X,Y,Z) = Y xor (X or not(Z))\\$$</div><br>
+&#x5173;&#x4E8E;&#x51FD;&#x6570;&#x7684;&#x6027;&#x8D28;&#xFF0C;&#x8BE6;&#x7EC6;&#x7684;&#x63CF;&#x8FF0;&#x5982;&#x4E0B;&#xFF1A;<p></p>
+<blockquote>
+<p>In each bit position F acts as a conditional: if X then Y else Z. The function F could have been defined using + instead of v since XY and not(X)Z will never have 1&apos;s in the same bit position.) It is interesting to note that if the bits of X, Y, and Z are independent and unbiased, the each bit of F(X,Y,Z) will be independent and unbiased.</p>
+</blockquote>
+<blockquote>
+<p>The functions G, H, and I are similar to the function F, in that they act in &quot;bitwise parallel&quot; to produce their output from the bits of X, Y, and Z, in such a manner that if the corresponding bits of X, Y, and Z are independent and unbiased, then each bit of G(X,Y,Z), H(X,Y,Z), and I(X,Y,Z) will be independent and unbiased. Note that the function H is the bit-wise &quot;xor&quot; or &quot;parity&quot; function of its inputs.</p>
+</blockquote>
+<blockquote>
+<p>This step uses a 64-element table T[1 ... 64] constructed from the sine function. Let T[i] denote the i-th element of the table, which is equal to the integer part of 4294967296 times abs(sin(i)), where i is in radians. The elements of the table are given in the appendix.</p>
+</blockquote>
+<p>&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x90FD;&#x662F;&#x72EC;&#x7ACB;&#x800C;&#x65E0;&#x504F;&#x7684;&#xFF0C; &#x63A5;&#x7740;&#x5229;&#x7528;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x7A0B;&#x5E8F;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token comment">/* Process each 16-word block. */</span>
+      For i <span class="token operator">=</span> <span class="token number">0</span> to N<span class="token operator">/</span><span class="token number">16</span><span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">do</span>
+<span class="token comment">/* Copy block i into X. */</span>
+        For j <span class="token operator">=</span> <span class="token number">0</span> to <span class="token number">15</span> <span class="token keyword">do</span>
+        Set X<span class="token punctuation">[</span>j<span class="token punctuation">]</span> to M<span class="token punctuation">[</span>i<span class="token operator">*</span><span class="token number">16</span><span class="token operator">+</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span>
+        end <span class="token comment">/* of loop on j */</span>
+<span class="token comment">/* Save A as AA, B as BB, C as CC, and D as DD. */</span>
+        AA <span class="token operator">=</span> A
+        BB <span class="token operator">=</span> B
+        CC <span class="token operator">=</span> C
+        DD <span class="token operator">=</span> D
+ <span class="token comment">/* Round 1. */</span>
+        <span class="token comment">/* Let [abcd k s i] denote the operation
+        a = b + ((a + F(b,c,d) + X[k] + T[i]) &lt;&lt;&lt; s). */</span>
+        <span class="token comment">/* Do the following 16 operations. */</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">0</span> <span class="token number">7</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">1</span> <span class="token number">12</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">2</span> <span class="token number">17</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">3</span> <span class="token number">22</span> <span class="token number">4</span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">4</span> <span class="token number">7</span> <span class="token number">5</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">5</span> <span class="token number">12</span> <span class="token number">6</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">6</span> <span class="token number">17</span> <span class="token number">7</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">7</span> <span class="token number">22</span> <span class="token number">8</span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">8</span> <span class="token number">7</span> <span class="token number">9</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">9</span> <span class="token number">12</span> <span class="token number">10</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">10</span> <span class="token number">17</span> <span class="token number">11</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">11</span> <span class="token number">22</span> <span class="token number">12</span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">12</span> <span class="token number">7</span> <span class="token number">13</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">13</span> <span class="token number">12</span> <span class="token number">14</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">14</span> <span class="token number">17</span> <span class="token number">15</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">15</span> <span class="token number">22</span> <span class="token number">16</span><span class="token punctuation">]</span>
+ <span class="token comment">/* Round 2. */</span>
+        <span class="token comment">/* Let [abcd k s i] denote the operation
+        a = b + ((a + G(b,c,d) + X[k] + T[i]) &lt;&lt;&lt; s). */</span>
+        <span class="token comment">/* Do the following 16 operations. */</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">1</span> <span class="token number">5</span> <span class="token number">17</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">6</span> <span class="token number">9</span> <span class="token number">18</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">11</span> <span class="token number">14</span> <span class="token number">19</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">0</span> <span class="token number">20</span> <span class="token number">20</span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">5</span> <span class="token number">5</span> <span class="token number">21</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">10</span> <span class="token number">9</span> <span class="token number">22</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">15</span> <span class="token number">14</span> <span class="token number">23</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">4</span> <span class="token number">20</span> <span class="token number">24</span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">9</span> <span class="token number">5</span> <span class="token number">25</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">14</span> <span class="token number">9</span> <span class="token number">26</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">3</span> <span class="token number">14</span> <span class="token number">27</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">8</span> <span class="token number">20</span> <span class="token number">28</span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">13</span> <span class="token number">5</span> <span class="token number">29</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">2</span> <span class="token number">9</span> <span class="token number">30</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">7</span> <span class="token number">14</span> <span class="token number">31</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">12</span> <span class="token number">20</span> <span class="token number">32</span><span class="token punctuation">]</span>
+ <span class="token comment">/* Round 3. */</span>
+        <span class="token comment">/* Let [abcd k s t] denote the operation
+        a = b + ((a + H(b,c,d) + X[k] + T[i]) &lt;&lt;&lt; s). */</span>
+        <span class="token comment">/* Do the following 16 operations. */</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">5</span> <span class="token number">4</span> <span class="token number">33</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">8</span> <span class="token number">11</span> <span class="token number">34</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">11</span> <span class="token number">16</span> <span class="token number">35</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">14</span> <span class="token number">23</span> <span class="token number">36</span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">1</span> <span class="token number">4</span> <span class="token number">37</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">4</span> <span class="token number">11</span> <span class="token number">38</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">7</span> <span class="token number">16</span> <span class="token number">39</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">10</span> <span class="token number">23</span> <span class="token number">40</span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">13</span> <span class="token number">4</span> <span class="token number">41</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">0</span> <span class="token number">11</span> <span class="token number">42</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">3</span> <span class="token number">16</span> <span class="token number">43</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">6</span> <span class="token number">23</span> <span class="token number">44</span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">9</span> <span class="token number">4</span> <span class="token number">45</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">12</span> <span class="token number">11</span> <span class="token number">46</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">15</span> <span class="token number">16</span> <span class="token number">47</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">2</span> <span class="token number">23</span> <span class="token number">48</span><span class="token punctuation">]</span>
+ <span class="token comment">/* Round 4. */</span>
+        <span class="token comment">/* Let [abcd k s t] denote the operation
+        a = b + ((a + I(b,c,d) + X[k] + T[i]) &lt;&lt;&lt; s). */</span>
+        <span class="token comment">/* Do the following 16 operations. */</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">0</span> <span class="token number">6</span> <span class="token number">49</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">7</span> <span class="token number">10</span> <span class="token number">50</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">14</span> <span class="token number">15</span> <span class="token number">51</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">5</span> <span class="token number">21</span> <span class="token number">52</span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">12</span> <span class="token number">6</span> <span class="token number">53</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">3</span> <span class="token number">10</span> <span class="token number">54</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">10</span> <span class="token number">15</span> <span class="token number">55</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">1</span> <span class="token number">21</span> <span class="token number">56</span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">8</span> <span class="token number">6</span> <span class="token number">57</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">15</span> <span class="token number">10</span> <span class="token number">58</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">6</span> <span class="token number">15</span> <span class="token number">59</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">13</span> <span class="token number">21</span> <span class="token number">60</span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>ABCD <span class="token number">4</span> <span class="token number">6</span> <span class="token number">61</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>DABC <span class="token number">11</span> <span class="token number">10</span> <span class="token number">62</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>CDAB <span class="token number">2</span> <span class="token number">15</span> <span class="token number">63</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>BCDA <span class="token number">9</span> <span class="token number">21</span> <span class="token number">64</span><span class="token punctuation">]</span>
+ <span class="token comment">/* Then perform the following additions. (That is increment each
+        of the four registers by the value it had before this block
+        was started.) */</span>
+        A <span class="token operator">=</span> A <span class="token operator">+</span> AA
+        B <span class="token operator">=</span> B <span class="token operator">+</span> BB
+        C <span class="token operator">=</span> C <span class="token operator">+</span> CC
+        D <span class="token operator">=</span> D <span class="token operator">+</span> DD
+ end <span class="token comment">/* of loop on i */</span>
+</pre><h4 class="mume-header" id="%E7%AC%AC%E4%BA%94%E6%AD%A5-%E8%BE%93%E5%87%BA">&#x7B2C;&#x4E94;&#x6B65;&#xFF1A; &#x8F93;&#x51FA;</h4>
+
+<p>&#x4F5C;&#x4E3A;&#x8F93;&#x51FA;&#x4EA7;&#x751F;&#x7684;&#x6D88;&#x606F;&#x6458;&#x8981;&#x662F; A&#x3001;B&#x3001;C&#x3001;D&#x3002; &#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x4ECE; A &#x7684;&#x4F4E;&#x4F4D;&#x5B57;&#x8282;&#x5F00;&#x59CB;&#xFF0C;&#x4EE5; D &#x7684;&#x9AD8;&#x4F4D;&#x5B57;&#x8282;&#x7ED3;&#x675F;&#x3002;</p>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x5BF9; MD5 &#x7684;&#x63CF;&#x8FF0;&#x3002;</p>
+<h4 class="mume-header" id="%E5%BA%94%E7%94%A8sup11supref">&#x5E94;&#x7528;<a href="#Ref"><sup>11</sup></a></h4>
+
+<h5 class="mume-header" id="%E7%94%A8%E4%BA%8E%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86">&#x7528;&#x4E8E;&#x5BC6;&#x7801;&#x7BA1;&#x7406;</h5>
+
+<p>&#x5F53;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x67D0;&#x4E9B;&#x5BC6;&#x7801;&#x4FE1;&#x606F;&#x4EE5;&#x7528;&#x4E8E;&#x8EAB;&#x4EFD;&#x786E;&#x8BA4;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x76F4;&#x63A5;&#x5C06;&#x5BC6;&#x7801;&#x4FE1;&#x606F;&#x4EE5;&#x660E;&#x7801;&#x65B9;&#x5F0F;&#x4FDD;&#x5B58;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#xFF0C;&#x4E0D;&#x4F7F;&#x7528;&#x4EFB;&#x4F55;&#x4FDD;&#x5BC6;&#x63AA;&#x65BD;&#xFF0C;&#x7CFB;&#x7EDF;&#x7BA1;&#x7406;&#x5458;&#x5C31;&#x5F88;&#x5BB9;&#x6613;&#x80FD;&#x5F97;&#x5230;&#x539F;&#x6765;&#x7684;&#x5BC6;&#x7801;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x4E00;&#x65E6;&#x6CC4;&#x9732;&#xFF0C; &#x5BC6;&#x7801;&#x4E5F;&#x5F88;&#x5BB9;&#x6613;&#x88AB;&#x7834;&#x8BD1;&#x3002;&#x4E3A;&#x4E86;&#x589E;&#x52A0;&#x5B89;&#x5168;&#x6027;&#xFF0C;&#x6709;&#x5FC5;&#x8981;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x9700;&#x8981;&#x4FDD;&#x5BC6;&#x7684;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x52A0;&#x5BC6;&#xFF0C;&#x8FD9;&#x6837;&#xFF0C;&#x5373;&#x4F7F;&#x6709;&#x4EBA;&#x5F97;&#x5230;&#x4E86;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x89E3;&#x5BC6;&#x7B97;&#x6CD5;&#xFF0C;&#x4E5F;&#x4E0D;&#x80FD;&#x5F97;&#x5230;&#x539F;&#x6765;&#x7684;&#x5BC6;&#x7801;&#x4FE1;&#x606F;&#x3002;MD5&#x7B97;&#x6CD5;&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x5730;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x53EF;&#x4EE5;&#x5C06;&#x4EFB;&#x610F;&#x957F;&#x5EA6;&#x7684;&#x8F93;&#x5165;&#x4E32;&#x7ECF;&#x8FC7;&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#x56FA;&#x5B9A;&#x957F;&#x5EA6;&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x800C;&#x4E14;&#x53EA;&#x6709;&#x5728;&#x660E;&#x6587;&#x76F8;&#x540C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x624D;&#x80FD;&#x7B49;&#x5230;&#x76F8;&#x540C;&#x7684;&#x5BC6;&#x6587;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E2A;&#x7B97;&#x6CD5;&#x662F;&#x4E0D;&#x53EF;&#x9006;&#x7684;&#xFF0C;&#x5373;&#x4FBF;&#x5F97;&#x5230;&#x4E86;&#x52A0;&#x5BC6;&#x4EE5;&#x540E;&#x7684;&#x5BC6;&#x6587;&#xFF0C;&#x4E5F;&#x4E0D;&#x53EF;&#x80FD;&#x901A;&#x8FC7;&#x89E3;&#x5BC6;&#x7B97;&#x6CD5;&#x53CD;&#x7B97;&#x51FA;&#x660E;&#x6587;&#x3002;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x628A;&#x7528;&#x6237;&#x7684;&#x5BC6;&#x7801;&#x4EE5;MD5&#x503C;&#xFF08;&#x6216;&#x7C7B;&#x4F3C;&#x7684;&#x5176;&#x5B83;&#x7B97;&#x6CD5;&#xFF09;&#x7684;&#x65B9;&#x5F0F;&#x4FDD;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x7528;&#x6237;&#x6CE8;&#x518C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7CFB;&#x7EDF;&#x662F;&#x628A;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x5BC6;&#x7801;&#x8BA1;&#x7B97;&#x6210; MD5 &#x503C;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x53BB;&#x548C;&#x7CFB;&#x7EDF;&#x4E2D;&#x4FDD;&#x5B58;&#x7684; MD5 &#x503C;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#xFF0C;&#x5982;&#x679C;&#x5BC6;&#x6587;&#x76F8;&#x540C;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8BA4;&#x5B9A;&#x5BC6;&#x7801;&#x662F;&#x6B63;&#x786E;&#x7684;&#xFF0C;&#x5426;&#x5219;&#x5BC6;&#x7801;&#x9519;&#x8BEF;&#x3002;&#x901A;&#x8FC7;&#x8FD9;&#x6837;&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x7CFB;&#x7EDF;&#x5728;&#x5E76;&#x4E0D;&#x77E5;&#x9053;&#x7528;&#x6237;&#x5BC6;&#x7801;&#x660E;&#x7801;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5C31;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;&#x7528;&#x6237;&#x767B;&#x5F55;&#x7CFB;&#x7EDF;&#x7684;&#x5408;&#x6CD5;&#x6027;&#x3002;&#x8FD9;&#x6837;&#x4E0D;&#x4F46;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x7528;&#x6237;&#x7684;&#x5BC6;&#x7801;&#x88AB;&#x5177;&#x6709;&#x7CFB;&#x7EDF;&#x7BA1;&#x7406;&#x5458;&#x6743;&#x9650;&#x7684;&#x7528;&#x6237;&#x77E5;&#x9053;&#xFF0C;&#x800C;&#x4E14;&#x8FD8;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x589E;&#x52A0;&#x4E86;&#x5BC6;&#x7801;&#x88AB;&#x7834;&#x89E3;&#x7684;&#x96BE;&#x5EA6; [8]  &#x3002;</p>
+<h5 class="mume-header" id="%E7%94%B5%E5%AD%90%E7%AD%BE%E5%90%8D">&#x7535;&#x5B50;&#x7B7E;&#x540D;</h5>
+
+<p>MD5 &#x7B97;&#x6CD5;&#x8FD8;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x4E00;&#x79CD;&#x7535;&#x5B50;&#x7B7E;&#x540D;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x4F7F;&#x7528;&#xFF0C;&#x4F7F;&#x7528; MD5&#x7B97;&#x6CD5;&#x5C31;&#x53EF;&#x4EE5;&#x4E3A;&#x4EFB;&#x4F55;&#x6587;&#x4EF6;&#xFF08;&#x4E0D;&#x7BA1;&#x5176;&#x5927;&#x5C0F;&#x3001;&#x683C;&#x5F0F;&#x3001;&#x6570;&#x91CF;&#xFF09;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x72EC;&#x4E00;&#x65E0;&#x4E8C;&#x7684;&#x201C;&#x6570;&#x5B57;&#x6307;&#x7EB9;&#x201D;&#xFF0C;&#x501F;&#x52A9;&#x8FD9;&#x4E2A;&#x201C;&#x6570;&#x5B57;&#x6307;&#x7EB9;&#x201D;&#xFF0C;&#x901A;&#x8FC7;&#x68C0;&#x67E5;&#x6587;&#x4EF6;&#x524D;&#x540E; MD5 &#x503C;&#x662F;&#x5426;&#x53D1;&#x751F;&#x4E86;&#x6539;&#x53D8;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x6E90;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x88AB;&#x6539;&#x52A8;&#x3002;&#x6211;&#x4EEC;&#x5728;&#x4E0B;&#x8F7D;&#x8F6F;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x7ECF;&#x5E38;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x8F6F;&#x4EF6;&#x7684;&#x4E0B;&#x8F7D;&#x9875;&#x9762;&#x4E0A;&#x9664;&#x4E86;&#x4F1A;&#x63D0;&#x4F9B;&#x8F6F;&#x4EF6;&#x7684;&#x4E0B;&#x8F7D;&#x5730;&#x5740;&#x4EE5;&#x5916;&#xFF0C;&#x8FD8;&#x4F1A;&#x7ED9;&#x51FA;&#x4E00;&#x4E32;&#x957F;&#x957F;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x8FD9;&#x4E32;&#x5B57;&#x7B26;&#x4E32;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x8BE5;&#x8F6F;&#x4EF6;&#x7684;MD5 &#x503C;&#xFF0C;&#x5B83;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x5728;&#x4E8E;&#x4E0B;&#x8F7D;&#x8BE5;&#x8F6F;&#x4EF6;&#x540E;&#xFF0C;&#x5BF9;&#x4E0B;&#x8F7D;&#x5F97;&#x5230;&#x7684;&#x6587;&#x4EF6;&#x7528;&#x4E13;&#x95E8;&#x7684;&#x8F6F;&#x4EF6;&#xFF08;&#x5982; Windows MD5 check &#x7B49;&#xFF09;&#x505A;&#x4E00;&#x6B21; MD5 &#x6821;&#x9A8C;&#xFF0C;&#x4EE5;&#x786E;&#x4FDD;&#x6211;&#x4EEC;&#x83B7;&#x5F97;&#x7684;&#x6587;&#x4EF6;&#x4E0E;&#x8BE5;&#x7AD9;&#x70B9;&#x63D0;&#x4F9B;&#x7684;&#x6587;&#x4EF6;&#x4E3A;&#x540C;&#x4E00;&#x6587;&#x4EF6;&#x3002;&#x5229;&#x7528; MD5 &#x7B97;&#x6CD5;&#x6765;&#x8FDB;&#x884C;&#x6587;&#x4EF6;&#x6821;&#x9A8C;&#x7684;&#x65B9;&#x6848;&#x88AB;&#x5927;&#x91CF;&#x5E94;&#x7528;&#x5230;&#x8F6F;&#x4EF6;&#x4E0B;&#x8F7D;&#x7AD9;&#x3001;&#x8BBA;&#x575B;&#x6570;&#x636E;&#x5E93;&#x3001;&#x7CFB;&#x7EDF;&#x6587;&#x4EF6;&#x5B89;&#x5168;&#x7B49;&#x65B9;&#x9762; [8]  &#x3002;</p>
+<h5 class="mume-header" id="%E5%9E%83%E5%9C%BE%E9%82%AE%E4%BB%B6%E7%AD%9B%E9%80%89">&#x5783;&#x573E;&#x90AE;&#x4EF6;&#x7B5B;&#x9009;</h5>
+
+<p>&#x5728;&#x7535;&#x5B50;&#x90AE;&#x4EF6;&#x4F7F;&#x7528;&#x8D8A;&#x6765;&#x8D8A;&#x666E;&#x904D;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x5229;&#x7528; MD5 &#x7B97;&#x6CD5;&#x5728;&#x90AE;&#x4EF6;&#x63A5;&#x6536;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x8FDB;&#x884C;&#x5783;&#x573E;&#x90AE;&#x4EF6;&#x7684;&#x7B5B;&#x9009;&#xFF0C;&#x4EE5;&#x51CF;&#x5C11;&#x6B64;&#x7C7B;&#x90AE;&#x4EF6;&#x7684;&#x5E72;&#x6270;&#xFF0C;&#x5177;&#x4F53;&#x601D;&#x8DEF;&#x5982;&#x4E0B;&#xFF1A;<br>
+&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x90AE;&#x4EF6; MD5 &#x503C;&#x8D44;&#x6599;&#x5E93;&#xFF0C;&#x5206;&#x522B;&#x50A8;&#x5B58;&#x90AE;&#x4EF6;&#x7684; MD5 &#x503C;&#x3001;&#x5141;&#x8BB8;&#x51FA;&#x73B0;&#x7684;&#x6B21;&#x6570;&#xFF08;&#x5047;&#x5B9A;&#x4E3A; 3&#xFF09;&#x548C;&#x51FA;&#x73B0;&#x6B21;&#x6570;&#xFF08;&#x521D;&#x503C;&#x4E3A;&#x96F6;&#xFF09;&#x3002;<br>
+&#x5BF9;&#x6BCF;&#x4E00;&#x5C01;&#x6536;&#x5230;&#x7684;&#x90AE;&#x4EF6;&#xFF0C;&#x5C06;&#x5B83;&#x7684;&#x6B63;&#x6587;&#x90E8;&#x5206;&#x8FDB;&#x884C;MD5 &#x8BA1;&#x7B97;&#xFF0C;&#x5F97;&#x5230; MD5 &#x503C;&#xFF0C;&#x5C06;&#x8FD9;&#x4E2A;&#x503C;&#x5728;&#x8D44;&#x6599;&#x5E93;&#x4E2D;&#x8FDB;&#x884C;&#x641C;&#x7D22;&#x3002;<br>
+&#x5982;&#x672A;&#x53D1;&#x73B0;&#x76F8;&#x540C;&#x7684; MD5 &#x503C;&#xFF0C;&#x8BF4;&#x660E;&#x6B64;&#x90AE;&#x4EF6;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x6536;&#x5230;&#xFF0C;&#x5C06;&#x6B64; MD5 &#x503C;&#x5B58;&#x5165;&#x8D44;&#x6599;&#x5E93;&#xFF0C;&#x5E76;&#x5C06;&#x51FA;&#x73B0;&#x6B21;&#x6570;&#x7F6E;&#x4E3A;1&#xFF0C;&#x8F6C;&#x5230;&#x7B2C;&#x4E94;&#x6B65;&#x3002;<br>
+&#x5982;&#x53D1;&#x73B0;&#x76F8;&#x540C;&#x7684; MD5 &#x503C;&#xFF0C;&#x8BF4;&#x660E;&#x6536;&#x5230;&#x8FC7;&#x540C;&#x6837;&#x5185;&#x5BB9;&#x7684;&#x90AE;&#x4EF6;&#xFF0C;&#x5C06;&#x51FA;&#x73B0;&#x6B21;&#x6570;&#x52A0; 1&#xFF0C;&#x5E76;&#x4E0E;&#x5141;&#x8BB8;&#x51FA;&#x73B0;&#x6B21;&#x6570;&#x76F8;&#x6BD4;&#x8F83;&#xFF0C;&#x5982;&#x5C0F;&#x4E8E;&#x5141;&#x8BB8;&#x51FA;&#x73B0;&#x6B21;&#x6570;&#xFF0C;&#x5C31;&#x8F6C;&#x5230;&#x7B2C;&#x4E94;&#x6B65;&#x3002;&#x5426;&#x5219;&#x4E2D;&#x6B62;&#x63A5;&#x6536;&#x8BE5;&#x90AE;&#x4EF6;&#x3002;&#x7ED3;&#x675F;&#x3002;<br>
+&#x63A5;&#x6536;&#x8BE5;&#x90AE;&#x4EF6; [8]  &#x3002;</p>
+<h4 class="mume-header" id="%E6%80%BB%E7%BB%93">&#x603B;&#x7ED3;</h4>
+
+<p>MD5 &#x6D88;&#x606F;&#x6458;&#x8981;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x7B80;&#x5355;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x4EFB;&#x610F;&#x957F;&#x5EA6;&#x6D88;&#x606F;&#x7684;&#x201C;&#x6307;&#x7EB9;&#x201D;&#x6216;&#x6D88;&#x606F;&#x6458;&#x8981;&#x3002;&#x636E;&#x63A8;&#x6D4B;&#xFF0C;&#x63D0;&#x51FA;&#x5177;&#x6709;&#x76F8;&#x540C;&#x6D88;&#x606F;&#x6458;&#x8981;&#x7684;&#x4E24;&#x6761;&#x6D88;&#x606F;&#x7684;&#x96BE;&#x5EA6;&#x7EA6;&#x4E3A; 2^64 &#x6B21;&#x64CD;&#x4F5C;&#xFF0C;&#x800C;&#x63D0;&#x51FA;&#x5177;&#x6709;&#x7ED9;&#x5B9A;&#x6D88;&#x606F;&#x6458;&#x8981;&#x7684;&#x4EFB;&#x4F55;&#x6D88;&#x606F;&#x7684;&#x96BE;&#x5EA6;&#x7EA6;&#x4E3A; 2^128 &#x6B21;&#x64CD;&#x4F5C;&#x3002;MD5 &#x7B97;&#x6CD5;&#x5DF2;&#x88AB;&#x4ED4;&#x7EC6;&#x5BA1;&#x67E5;&#x8FC7;&#x5F31;&#x70B9;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x79CD;&#x76F8;&#x5BF9;&#x8F83;&#x65B0;&#x7684;&#x7B97;&#x6CD5;&#xFF0C;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x5B89;&#x5168;&#x5206;&#x6790;&#x5F53;&#x7136;&#x662F;&#x5408;&#x7406;&#x7684;&#xFF0C;&#x5C31;&#x50CF;&#x4EFB;&#x4F55;&#x6B64;&#x7C7B;&#x65B0;&#x63D0;&#x6848;&#x7684;&#x60C5;&#x51B5;&#x4E00;&#x6837;&#x3002;</p>
+<h4 class="mume-header" id="ref">Ref</h4>
+
+<ol>
+<li>&#x9EC4;&#x58F0;&#x56FD;, &#x5434;&#x8543;. &#x6D45;&#x8C08;RSA&#x516C;&#x53F8;&#x4E8B;&#x4EF6;&#x201C;&#x540E;&#x95E8;&#x201D;[J]. &#x4E2D;&#x56FD;&#x91D1;&#x878D;&#x7535;&#x8111;, 2014(7):62-64.</li>
+<li>&#x4E48;&#x4E3D;&#x9896;. MD5&#x7B97;&#x6CD5;&#x7684;&#x5206;&#x6790;&#x548C;&#x6539;&#x8FDB;[J]. &#x54C8;&#x5C14;&#x6EE8;&#x5E08;&#x8303;&#x5927;&#x5B66;&#x81EA;&#x7136;&#x79D1;&#x5B66;&#x5B66;&#x62A5;, 2011, 27(5):34-37.</li>
+<li>&#x738B;&#x53EF;. MD5&#x7B97;&#x6CD5;&#x7814;&#x7A76;[J]. &#x4E2D;&#x6587;&#x4FE1;&#x606F;, 2002(2):78-81.</li>
+<li>Kaliski B. The MD2 Message-Digest Algorithm[M]. 1992.</li>
+<li>Rivest R. The MD4 Message-Digest Algorithm[M]// Advances in Cryptology-CRYPT0&#x2019; 90. 1990.</li>
+<li>&#x5218;&#x4FCA;&#x8F89;. MD5 &#x6D88;&#x606F;&#x6458;&#x8981;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x53CA;&#x6539;&#x8FDB;[J]. &#x798F;&#x5EFA;&#x7535;&#x8111;, 2007 (4): 92-93.</li>
+<li>&#x8212;&#x7545;. MD5 &#x7B97;&#x6CD5;&#x539F;&#x7406;&#x53CA;&#x5176;&#x78B0;&#x649E;&#x653B;&#x51FB;[J]. &#x8F6F;&#x4EF6;&#x5BFC;&#x520A;, 2007, 6(6): 103-104.</li>
+<li>&#x6851;&#x6D77;, &#x674E;&#x5EFA;&#x5B9D;. &#x52A0;&#x5BC6;&#x7B97;&#x6CD5;MD5&#x7684;&#x7814;&#x7A76;&#x4E0E;&#x5E94;&#x7528;[J]. &#x91D1;&#x878D;&#x79D1;&#x6280;&#x65F6;&#x4EE3;, 2006, 14(4):74-77.</li>
+<li><a href="http://www.fastsum.com/rfc1321.php">http://www.fastsum.com/rfc1321.php</a></li>
+<li><a href="https://eprint.iacr.org/2009/223.pdf">https://eprint.iacr.org/2009/223.pdf</a></li>
+<li><a href="https://baike.baidu.com/item/MD5/212708?fr=aladdin">https://baike.baidu.com/item/MD5/212708?fr=aladdin</a></li>
+<li>Rivest, R., &quot;The MD4 Message Digest Algorithm&quot;, RFC 1320, MIT and RSA Data Security, Inc., April 1992.</li>
+<li>Rivest, R., &quot;The MD4 message digest algorithm&quot;, in A.J. Menezes and S.A. Vanstone, editors, Advances in Cryptology - CRYPTO &apos;90 Proceedings, pages 303-311, Springer-Verlag, 1991.</li>
+<li>CCITT Recommendation X.509 (1988), &quot;The Directory - Authentication Framework.&quot;</li>
+</ol>
+
+      </div>
+      
+      
+    
+    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "dark"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
+    
+    
+    
+    
+    
+  
+    </body></html>
