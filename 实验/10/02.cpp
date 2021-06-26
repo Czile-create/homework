@@ -32,7 +32,7 @@ double analyze (
         cout <<"+";
     for (auto i = min(1e-5*N/(double(clockEnd - clockBegin)/CLOCKS_PER_SEC) + 1, M); i < M; ++i)
         cout << " ";
-    cout << " ) " << double(clockEnd - clockBegin)/CLOCKS_PER_SEC << " s\n";
+    cout << ((is_sorted(ls.begin(), ls.end())) ? " ) True.  " : " ) False. ") << double(clockEnd - clockBegin)/CLOCKS_PER_SEC << " s\n";
     return double(clockEnd - clockBegin)/CLOCKS_PER_SEC;
 }
 
@@ -61,10 +61,10 @@ void shellSort(InputIterator first, InputIterator last) {
 
 template <class InputIterator>
 void bubbleSort(InputIterator first, InputIterator last) {
-    for (auto i = first; i < last; ++i) 
-        for (auto j = i; j < last; ++j)
-            if (*i > *j)
-                swap(*i, *j);
+    for (auto i = last - 1; i != first; --i) 
+        for (auto j = first; j < i; ++j)
+            if (*j > *(j+1))
+                swap(*(j+1), *j);
 }
 
 template <class InputIterator>
@@ -97,17 +97,40 @@ void heapSort(InputIterator first, InputIterator last) {
     }
 }
 
+
 template <class InputIterator>
 void mergeSort(InputIterator first, InputIterator last) {
     if (last - first < 2) return;
     auto mid = (last - first) / 2;
     mergeSort(first, first + mid);
     mergeSort(first + mid, last);
-    list<int> tmp;
+    // thread tl(mergeSort<InputIterator>, first, first + mid);
+    // thread tr(mergeSort<InputIterator>, first + mid, last);
+    // tl.join();
+    // tr.join();
+
+    queue<int> tmp;
     for (InputIterator i = first, j = first + mid; i != first + mid || j != last; )
-        tmp.push_back((j == last || i < first + mid && *i < *j) ? *(i++) : *(j++));
-    for (auto &i: tmp)
-        *(first++) = i;
+        tmp.push((j == last || i < first + mid && *i < *j) ? *(i++) : *(j++));
+    for (auto i = first; tmp.size();) {
+        *(i++) = tmp.front();
+        tmp.pop();
+    }
+}
+
+template <class InputIterator>
+void radixSort(InputIterator first, InputIterator last) {
+    for (int k = 8; !is_sorted(first, last); k += 8) {
+        array<queue<int>, 256> tmp;
+        for (auto i = first; i != last; ++i) 
+            tmp[((*i) & ((1ull << k) - 1)) >> (k - 8)].push(*i);
+        auto x = first;
+        for (auto &i: tmp)
+            while (i.size()) {
+                *(x++) = i.front();
+                i.pop();
+            }
+    }
 }
 
 int main() {
@@ -121,12 +144,13 @@ int main() {
     cout << "Size of test: " << N << endl;
     analyze(insertSort<vector<int>::iterator>, N, M, "insertSort");
     analyze(shellSort<vector<int>::iterator>, N, M, "shellSort");
-    analyze(bubbleSort<vector<int>::iterator>, N, M, "bubbleSort");
+    // analyze(bubbleSort<vector<int>::iterator>, N, M, "bubbleSort");
     analyze(quickSort<vector<int>::iterator>, N, M, "quickSort");
     analyze(selectSort<vector<int>::iterator>, N, M, "selectSort");
     analyze(heapSort<vector<int>::iterator>, N, M, "heapSort");
     analyze(mergeSort<vector<int>::iterator>, N, M, "mergeSort");
     analyze(std::sort<vector<int>::iterator>, N, M, "std::sort");
+    analyze(radixSort<vector<int>::iterator>, N, M, "radixSort");
     return 0;
 }
 
