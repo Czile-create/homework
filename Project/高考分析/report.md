@@ -32,7 +32,7 @@ typedef struct major {
 读取数据的代码如下：
 ```cpp
 vector<major> readmajor() {
-    ifstream fin("data1/major.txt");
+    ifstream fin("data1/major.mdb");
     vector<major> p;
     while (!fin.eof()) {
         major tmp;
@@ -111,9 +111,10 @@ for (auto &i: major) {
 cout << "稳：\n";
 for (auto &i: major) {
     auto l = (rank[0][i.avr[0]]+rank[1][i.avr[1]]+rank[2][i.avr[2]])/count_if(i.avr, i.avr+3, [](auto i){return i;});
-    auto p = min(min(rank[0][i.avr[0]], rank[1][i.avr[1]]), rank[2][i.avr[2]]);
-    p = !p ? min(rank[0][i.avr[0]], rank[1][i.avr[1]]) : p;
-    p = !p ? rank[0][i.avr[0]] : p;
+    auto p = MAX;
+    for (auto j = 0; j < 3; ++j)
+        if (rank[j][i.avr[j]] && rank[j][i.avr[j]] < p)
+            p = rank[j][i.avr[j]];
     if (i.isScience && l >= rank[3][score] && p < rank[3][score]) {
         cout << i.name << " " << i.institute << " ";
         for (auto j = 0; j < 3; ++j)
@@ -125,9 +126,10 @@ for (auto &i: major) {
 }
 cout << "保：\n";
 for (auto &i: major) {
-    auto p = min(min(rank[0][i.avr[0]], rank[1][i.avr[1]]), rank[2][i.avr[2]]);
-    p = !p ? min(rank[0][i.avr[0]], rank[1][i.avr[1]]) : p;
-    p = !p ? rank[0][i.avr[0]] : p;
+    int p = MAX;
+    for (auto j = 0; j < 3; ++j)
+        if (rank[j][i.avr[j]] && rank[j][i.avr[j]] < p)
+            p = rank[j][i.avr[j]];
     if (i.isScience && p >= rank[3][score]) {
         cout << i.name << " " << i.institute << " ";
         for (auto j = 0; j < 3; ++j)
