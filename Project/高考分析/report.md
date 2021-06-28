@@ -20,7 +20,7 @@ void readfile(map<int, int>&p, string s) {
 }
 ```
 ### Major info
-读取专业数据的代码包含于主程序中，该代码将 `data/major.txt` 读入到 `struct major` 中。在 `struct major` 中，各数据项表示：
+读取专业数据的代码包含于主程序中，该代码将 `data/major.mdb` 读入到 `struct major` 中。在 `struct major` 中，各数据项表示：
 ```cpp
 typedef struct major {
     string name, institute;     //专业名称，开设学院

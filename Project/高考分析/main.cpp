@@ -20,7 +20,7 @@ typedef struct major {
 } major;
 
 vector<major> readmajor() {
-    ifstream fin("data/major.txt");
+    ifstream fin("data/major.mdb");
     vector<major> p;
     while (!fin.eof()) {
         major tmp;
@@ -44,6 +44,7 @@ vector<major> readmajor() {
 int main() {
     //分数 -> 排名 2018 - 2021
     array<map<int, int>, 4> rank;
+    int MAX=3000000;
 
     readfile(rank[0], "data/2018.txt");
     readfile(rank[1], "data/2019.txt");
@@ -96,9 +97,10 @@ int main() {
     cout << "稳：\n";
     for (auto &i: major) {
         auto l = (rank[0][i.avr[0]]+rank[1][i.avr[1]]+rank[2][i.avr[2]])/count_if(i.avr, i.avr+3, [](auto i){return i;});
-        auto p = min(min(rank[0][i.avr[0]], rank[1][i.avr[1]]), rank[2][i.avr[2]]);
-        p = !p ? min(rank[0][i.avr[0]], rank[1][i.avr[1]]) : p;
-        p = !p ? rank[0][i.avr[0]] : p;
+        auto p = MAX;
+        for (auto j = 0; j < 3; ++j)
+            if (rank[j][i.avr[j]] && rank[j][i.avr[j]] < p)
+                p = rank[j][i.avr[j]];
         if (i.isScience && l >= rank[3][score] && p < rank[3][score]) {
             cout << i.name << " " << i.institute << " ";
             for (auto j = 0; j < 3; ++j)
@@ -110,9 +112,10 @@ int main() {
     }
     cout << "保：\n";
     for (auto &i: major) {
-        auto p = min(min(rank[0][i.avr[0]], rank[1][i.avr[1]]), rank[2][i.avr[2]]);
-        p = !p ? min(rank[0][i.avr[0]], rank[1][i.avr[1]]) : p;
-        p = !p ? rank[0][i.avr[0]] : p;
+        int p = MAX;
+        for (auto j = 0; j < 3; ++j)
+            if (rank[j][i.avr[j]] && rank[j][i.avr[j]] < p)
+                p = rank[j][i.avr[j]];
         if (i.isScience && p >= rank[3][score]) {
             cout << i.name << " " << i.institute << " ";
             for (auto j = 0; j < 3; ++j)
